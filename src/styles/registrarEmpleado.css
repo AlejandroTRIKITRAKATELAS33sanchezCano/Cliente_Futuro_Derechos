@@ -1,0 +1,94 @@
+.registro {
+    padding: 40px;
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+.titulo {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Contenedor principal */
+.formulario-contenedor {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* FOTO */
+.foto-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.foto-preview {
+    width: 150px;
+    height: 150px;
+    max-width: 150px;
+    max-height: 150px;
+    background-color: #dcdcdc;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.input-file {
+    font-size: 14px;
+}
+
+/* FORM */
+.formulario {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.formulario input,
+.formulario select {
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background-color: #dcdcdc;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s ease;
+}
+
+.formulario input:focus,
+.formulario select:focus {
+    background-color: #e9d5ff; /* púrpura claro */
+}
+
+/* Dirección ocupa todo el ancho */
+.direccion {
+    grid-column: span 3;
+}
+
+.Contraseña{
+    grid-column: span 2;
+}
+
+/* Botón */
+.btn-registrar {
+    grid-column: span 3;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background-color: #c084fc;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-registrar:hover {
+    background-color: #a855f7;
+    transform: scale(1.02);
+}
