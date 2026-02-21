@@ -2,7 +2,7 @@ import { Routes, Route} from 'react-router-dom'
 import Index from './pages/Index'
 import ConsultarEmpleados from './pages/ConsultarEmpleados'
 import RegistrarEmpleado from './pages/RegistrarEmpleado'
-
+import Hola from './pages/components/hola'
 function App() {
 
   return (
@@ -12,6 +12,7 @@ function App() {
       }
       <Route path='/administrador/consultarEmpleados' element={<ConsultarEmpleados/>}/>
       <Route path='/administrador/registrarEmpleado' element={<RegistrarEmpleado/>}/>
+      <Route path='/donSexo' element={<Hola/>}/>
     </Routes>
   )
 }
