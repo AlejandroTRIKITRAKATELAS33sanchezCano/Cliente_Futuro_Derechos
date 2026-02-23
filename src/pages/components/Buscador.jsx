@@ -1,4 +1,5 @@
 import "../../styles/buscador.css"
+import {Link} from "react-router-dom";
 
 function Buscador() {
     return (
@@ -8,7 +9,7 @@ function Buscador() {
                 placeholder="Buscar..."
                 className="buscador-input"
             />
-            <button className="buscador-btn">+</button>
+            <Link to="/administrador/registrarEmpleado" className="buscador-btn">+</Link>
         </div>
     )
 }
