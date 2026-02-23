@@ -1,46 +1,69 @@
 .buscador {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 15px;
-    border-radius: 12px;
+    gap: 15px; /* Espacio entre la barra y el botón */
     width: 90%;
-    margin-top: 30px;
+    /* margin: auto centra el buscador en la pantalla */
+    margin: 30px auto 0 auto; 
+}
+
+/* --- Nuevos estilos para la barra de búsqueda estilo Figma --- */
+.buscador-contenedor {
+    display: flex;
+    align-items: center;
+    flex: 1; /* Toma todo el espacio disponible empujando el botón a la derecha */
+    background-color: #f0e9d7; /* Color de Figma */
+    border: 1px solid #000; /* Borde oscuro para dar ese estilo definido */
+    border-radius: 30px; /* Forma de píldora */
+    padding: 8px 15px;
+    transition: box-shadow 0.2s ease;
+}
+
+.buscador-contenedor:focus-within {
+    /* Efecto al hacer clic dentro de la barra de búsqueda */
+    box-shadow: 0 0 0 2px #5b5321;
+}
+
+.buscador-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+    margin-right: 10px;
+}
+
+.buscador-icono svg {
+    width: 20px;
+    height: 20px;
 }
 
 .buscador-input {
     flex: 1;
-    padding: 10px 12px;
+    background-color: transparent; /* Se vuelve transparente para mostrar el color del contenedor */
     border: none;
     outline: none;
-    border-radius: 8px;
-    background-color: var(--color-primario);
-    color: white;
-    font-size: 14px;
-    transition: all 0.2s ease;
+    color: #333; /* Texto oscuro para contrastar con el fondo claro */
+    font-size: 16px;
 }
 
 .buscador-input::placeholder {
-    color: #b8b8d1;
+    color: #8c897d; /* Placeholder más oscuro para que sea legible */
 }
 
-.buscador-input:focus {
-    background-color: #32325a;
-    box-shadow: 0 0 0 2px #e9d5ff;
-}
-
+/* --- ESTILOS DEL BOTÓN INTACTOS --- */
 .buscador-btn {
-    padding: 8px 14px;
+    padding: 10px 12px;
     border: none;
-    border-radius: 8px;
-    background-color: var(--color-secundario); 
+    border-radius: 30px;
+    background-color: #5b5321; 
     color: white;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.2s ease;
+    text-decoration: none; /* Asegura que el Link no tenga subrayado */
 }
 
 .buscador-btn:hover {
-    background-color: #a855f7;
+    background-color: #5e2593;
     transform: scale(1.05);
 }

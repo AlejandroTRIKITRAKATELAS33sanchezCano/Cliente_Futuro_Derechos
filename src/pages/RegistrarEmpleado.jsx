@@ -43,15 +43,16 @@ function RegistrarEmpleado() {
 
                     <form className="formulario">
                         <input type="text" placeholder="Nombre" />
-                        <input type="text" placeholder="Apellido Paterno" />
-                        <input type="text" placeholder="Apellido Materno" />
+                        <input type="text" placeholder="Primer Apellido" />
+                        <input type="text" placeholder="Segundo Apellido" />
 
-                        <input type="number" placeholder="Edad" />
+                        <input type="date" placeholder="Fecha de Nacimiento" />
 
                         <select defaultValue="">
                             <option value="" disabled>Seleccionar sexo</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
+                            <option value="Otro">Otro</option>
                         </select>
 
                         <input type="text" placeholder="RFC" />
@@ -63,8 +64,14 @@ function RegistrarEmpleado() {
                             <option value="Empleado">Empleado</option>
                         </select>
 
-                        <select>
-                            <option>Aquí van los roles</option>
+                        <select defaultValue="">
+                            <option value="" disabled>Seleccionar rol</option>
+                            <option value="Coordinador">Coordinador</option>
+                            <option value="Psicologo">Psicólogo</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Abogado">Abogado</option>
+                            <option value="Trabajador Social">Trabajador Social</option>
+                            <option value="Analista">Analista</option>
                         </select>
 
                         <input type="text" placeholder="Correo"/>

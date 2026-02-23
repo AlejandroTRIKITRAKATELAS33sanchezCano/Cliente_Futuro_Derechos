@@ -1,26 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
 
-.header{
+.header {
     width: 100%;
     height: 90px;
     display: flex;
-    flex-wrap:wrap;
     align-items: center;
     justify-content: space-between;
     border-bottom: solid 3px #000;
+    /* Agregamos padding para que no pegue a los bordes de la pantalla */
+    padding: 0 40px; 
+    box-sizing: border-box; 
 }
 
-.header img{
+.header img {
     max-height: 80px;
     width: 100px;
 }
 
-.logo{
-    width: 250px;
+.logo {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-family: 'Cinzel', serif;
-    color: var(--color-secundario);
+    gap: 15px; /* Usamos gap en lugar de space-between para controlar mejor el espacio entre el logo y el texto */
+    font-family: 'Merriweather', serif;
+    color: var(--color-secundario); /* Asegúrate de tener esta variable definida, o usa #000 */
+}
+
+.logo h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* --- Estilos Nuevos para la sección derecha --- */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Separación entre el perfil y el menú */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    /* Añadimos el borde azul que se ve en el diseño de Figma */
+    border: 2px solid #000; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+.avatar svg {
+    width: 24px;
+    height: 24px;
+}
+
+.user-name {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    /* Color verde oliva basado en tu diseño de Figma */
+    color: #5b5321; 
+}
+
+.menu-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-icon svg {
+    width: 40px;
+    height: 40px;
+    color: #000;
 }
