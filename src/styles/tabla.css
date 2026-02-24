@@ -1,27 +1,26 @@
-/* Agregué una clase específica a la tabla para evitar afectar otras tablas en el futuro */
 table.tabla-usuarios {
     width: 90%;
-    /* Modifiqué el margin para que la tabla quede centrada horizontalmente */
-    margin: 100px auto 0 auto; 
+    margin-top: 100px;
     border-collapse: collapse;
-    font-family: 'Merriweather', serif;
+    font-family: Lato, serif;
 }
 
 thead {
     background-color: var(--color-primario);
-    color: var(--color-terciario);
+    color: var(--color-terciario, #fff);
     height: 50px;
 }
 
+/* AQUÍ ESTÁN LAS LÍNEAS DE LA TABLA */
 th, td {
     padding: 12px;
     text-align: center;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; 
     transition: background-color 0.2s ease;
 }
 
 tbody tr:hover {
-    background-color: #f3e8ff; /* púrpura claro */
+    background-color: #f3e8ff; 
 }
 
 td:hover::after,
@@ -38,63 +37,67 @@ th:hover::after {
 
 td, th {
     position: relative;
-    /* Se requiere overflow hidden para que el efecto hover en cruz no se desborde */
     overflow: hidden; 
 }
 
-/* --- Nuevos estilos para el círculo de Estado --- */
-
+/* --- ESTILOS DEL CÍRCULO DE ESTADO --- */
 .circulo-estado {
     width: 20px;
     height: 20px;
     border-radius: 50%;
-    margin: 0 auto; /* Centra el círculo en la celda */
-    border: 2px solid #b3b3b3; /* Borde gris del diseño */
-    box-shadow: inset 0px 1px 3px rgba(0,0,0,0.2); /* Sombra interior para dar volumen */
+    margin: 0 auto; 
+    border: 2px solid #b3b3b3; 
     transition: background-color 0.3s ease;
 }
 
 .circulo-estado.activo {
-    background-color: #00c853; /* Verde */
+    background-color: #00c853; 
 }
 
 .circulo-estado.inactivo {
-    background-color: #d50000; /* Rojo */
+    background-color: #d50000; 
 }
 
+/* --- ESTILOS DEL BOTÓN DEL OJO --- */
 .celda-acciones {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* Quitamos el padding extra si es necesario para centrar bien */
 }
 
 .btn-ver-detalle {
     background: transparent;
     border: none;
     cursor: pointer;
-    /* Color oscuro base para el ícono */
     color: #333333; 
     padding: 8px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    /* Transición suave para el hover */
     transition: all 0.2s ease-in-out;
+    text-decoration: none; /* <-- Agrega esta línea para evitar el subrayado */
 }
 
+/* AQUÍ LE DAMOS TAMAÑO AL OJO PARA QUE SEA VISIBLE */
 .btn-ver-detalle svg {
     width: 22px;
     height: 22px;
 }
 
-/* Efecto al pasar el mouse por encima */
 .btn-ver-detalle:hover {
-    /* Fondo sutil gris/morado basado en tu diseño */
     background-color: #e9d5ff; 
-    /* Cambia el color del ícono, puedes usar tu variable --color-primario */
-    color: #4a0072; /* Un morado más fuerte, ajustalo a tu paleta */
-    /* Hace que el ícono crezca un poquito */
+    color: #4a0072; 
     transform: scale(1.1); 
+}
+
+/* Estilo para el nombre clickeable */
+.link-nombre {
+    color: #4a0072; 
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.link-nombre:hover {
+    text-decoration: underline;
 }

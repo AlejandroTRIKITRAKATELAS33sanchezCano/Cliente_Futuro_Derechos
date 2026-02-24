@@ -1,10 +1,10 @@
 .buscador {
     display: flex;
     align-items: center;
-    gap: 15px; /* Espacio entre la barra y el botón */
+    gap: 15px; 
     width: 90%;
-    /* margin: auto centra el buscador en la pantalla */
-    margin: 30px auto 0 auto; 
+    margin-top: 30px; /* Regresamos a tu valor original */
+    /* (Tus demás estilos se quedan igual) */
 }
 
 /* --- Nuevos estilos para la barra de búsqueda estilo Figma --- */
