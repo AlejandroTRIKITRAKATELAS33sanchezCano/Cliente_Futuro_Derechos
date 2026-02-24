@@ -1,14 +1,33 @@
-import { useState } from "react"; // Importamos useState de React
+import { useState, useEffect, useRef } from "react";
 import logo from "../../assets/img/logo.avif";
 import "../../styles/header.css";
 // Si vas a navegar a otras pantallas, descomenta la siguiente línea:
 // import { Link } from "react-router-dom"; 
 
 function Header() {
-    // Estado para controlar si el menú está abierto (true) o cerrado (false)
     const [menuAbierto, setMenuAbierto] = useState(false);
+    
+    // 1. Creamos la referencia
+    const menuRef = useRef(null);
 
-    // Función que invierte el estado actual al hacer clic
+    // 2. Creamos el efecto para escuchar los clics
+    useEffect(() => {
+        const manejarClicFuera = (evento) => {
+            // Si el menú está abierto, existe la referencia, y el clic NO fue dentro de nuestro contenedor...
+            if (menuAbierto && menuRef.current && !menuRef.current.contains(evento.target)) {
+                setMenuAbierto(false); // ¡Lo cerramos!
+            }
+        };
+
+        // Agregamos el "escuchador" de eventos a toda la página
+        document.addEventListener("mousedown", manejarClicFuera);
+
+        // Importante: Limpiamos el evento cuando el componente se desmonta para evitar bugs
+        return () => {
+            document.removeEventListener("mousedown", manejarClicFuera);
+        };
+    }, [menuAbierto]); // Solo se re-ejecuta si el estado del menú cambia
+
     const toggleMenu = () => {
         setMenuAbierto(!menuAbierto);
     };
@@ -31,19 +50,17 @@ function Header() {
                     <span className="user-name">Virginia</span>
                 </div>
 
-                {/* Contenedor relativo para agrupar el ícono y su menú desplegable */}
-                <div className="menu-contenedor">
+                {/* 3. Le ponemos la etiqueta "ref" a todo el contenedor del menú */}
+                <div className="menu-contenedor" ref={menuRef}>
                     <div className="menu-icon" onClick={toggleMenu}>
                         <svg viewBox="0 0 24 24" fill="currentColor">
                             <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z"></path>
                         </svg>
                     </div>
 
-                    {/* El menú solo se renderiza si menuAbierto es true */}
                     {menuAbierto && (
                         <div className="menu-desplegable">
                             <ul className="menu-lista">
-                                {/* Puedes cambiar los <li> por <Link> de react-router-dom si lo necesitas */}
                                 <li className="menu-item">Inicio</li>
                                 <li className="menu-item">Empleados</li>
                                 <li className="menu-item">Configuración</li>

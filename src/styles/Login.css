@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #f9f9fb; /* Un fondo muy claro para que resalte la tarjeta */
+}
+
+/* --- Header Simplificado --- */
+.login-header {
+    width: 100%;
+    height: 90px;
+    display: flex;
+    align-items: center;
+    border-bottom: solid 3px #000;
+    padding: 0 40px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.login-logo {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-family: 'Cinzel', serif; /* O la fuente que hayas elegido para títulos */
+    color: #302b4a; /* Tu color primario/morado */
+}
+
+.login-logo img {
+    max-height: 80px;
+    width: 100px;
+}
+
+.login-logo h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* --- Área Principal y Tarjeta --- */
+.login-main {
+    flex: 1; /* Toma el resto del espacio disponible debajo del header */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* --- Marca de Agua --- */
+.marca-agua {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -40%); /* Lo centramos en la pantalla */
+    width: 70vw; /* Ocupará el 60% del ancho de la pantalla */
+    max-width: 800px; /* Tamaño máximo para que no se vea pixeleado en monitores gigantes */
+    opacity: 0.12; /* Muy transparente (ajústalo entre 0.05 y 0.15 según te guste) */
+    pointer-events: none; /* Crucial: evita que la imagen bloquee los clics en el formulario */
+    z-index: 0; /* Lo manda hasta el fondo */
+}
+
+/* Solo asegúrate de que tu tarjeta esté por encima agregando position y z-index */
+.login-tarjeta {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+    opacity: 0.8;
+    /* Agrega estas dos líneas a tu estilo actual de .login-tarjeta */
+    position: relative; 
+    z-index: 10; 
+}
+
+.login-titulo {
+    margin: 0 0 10px 0;
+    font-size: 1.8rem;
+    color: #302b4a;
+    text-align: center;
+}
+
+.login-subtitulo {
+    margin: 0 0 30px 0;
+    color: #6b7280;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* --- Formulario e Inputs --- */
+.login-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-grupo label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+}
+
+.input-grupo input {
+    padding: 12px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.2s ease;
+    background-color: #f9fafb;
+}
+
+.input-grupo input:focus {
+    border-color: #5b5321;
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(91, 83, 33, 0.1); /* Sombra suave verde oliva */
+}
+
+/* --- Botón --- */
+.login-btn {
+    margin-top: 10px;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    background-color: #5b5321; /* Verde oliva de tu botón "Nuevo Registro" */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.login-btn:hover {
+    background-color: #a855f7; /* Cambia a morado brillante como en tu buscador */
+    transform: translateY(-2px); /* Pequeño salto hacia arriba */
+    box-shadow: 0 4px 12px rgba(168, 85, 247, 0.3);
+}
