@@ -1,15 +1,17 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Fredoka", sans-serif;
+    font-style: normal;
 }
 
 /*COSAS GENERALES*/
 
 /*VARIABLES DE COLOR*/
 
-:root{
+:root {
     --color-primario: #362B4B;
-    --color-secundario: #5B5321 ;
+    --color-secundario: #5B5321;
     --color-terciario: #F0E9D7;
 }
