@@ -1,8 +1,40 @@
 import { useState } from "react"
 import Header from "./components/Header"
 import "../styles/registrarEmpleado.css"
+import { useFormik } from 'formik'
 
 function RegistrarEmpleado() {
+
+    const formik = useFormik({
+        initialValues: {
+            nombre: '',
+            primerApellido: '',
+            segundoApellido: '',
+            fechaNacimiento: '',
+            sexo: '',
+            rfc: '',
+            curp: '',
+            empleadoVoluntario: '',
+            rolid: '',
+            email: '',
+            codigoPostal: '',
+            estadoNombre: '',
+            municipioNombre: '',
+            coloniaNombre: '',
+            calle: '',
+            sn: '',
+            numExterior: '',
+            numInterior: '',
+            referencia: ''
+        },
+        onSubmit: values => {
+            console.log('Form data', values)
+        }
+    }
+
+    )
+
+    console.log('Form values', formik.values)
 
     const [imagen, setImagen] = useState(null)
 
@@ -41,54 +73,125 @@ function RegistrarEmpleado() {
 
                     </div>
 
-                    <form className="formulario">
-                        <input type="text" placeholder="Nombre" />
-                        <input type="text" placeholder="Primer Apellido" />
-                        <input type="text" placeholder="Segundo Apellido" />
+                    <form className="formulario" onSubmit={formik.handleSubmit}>
+                        <div className="campo-grupo">
+                            <label htmlFor="nombre"> Nombre </label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Aqui va tu nombre" onChange={formik.handleChange} value={formik.values.nombre}/>
+                        </div>
 
-                        <input type="date" placeholder="Fecha de Nacimiento" />
+                        <div className="campo-grupo">
+                            <label htmlFor="primerApellido"> Primer apellido </label>
+                            <input type="text" id="primerApellido" name="primerApellido" placeholder="Aqui va tu primer apellido" onChange={formik.handleChange} value={formik.values.primerApellido}/>
+                        </div>
 
-                        <select defaultValue="">
-                            <option value="" disabled>Seleccionar sexo</option>
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                            <option value="Otro">Otro</option>
-                        </select>
+                        <div className="campo-grupo">
+                            <label htmlFor="segundoApellido"> Segundo apellido </label>
+                            <input type="text" id="segundoApellido" name="segundoApellido" placeholder="Aqui va tu segundo apellido" onChange={formik.handleChange} value={formik.values.segundoApellido}/>
+                        </div>
+                        
+                        <div className="campo-grupo">
+                            <label htmlFor="fechaNacimiento">Ingresa tu fecha de nacimiento</label>
+                            <input type="date" id="fechaNacimiento" name="fechaNacimiento" onChange={formik.handleChange} value={formik.values.fechaNacimiento}/>
+                        </div>
 
-                        <input type="text" placeholder="RFC" />
-                        <input type="text" placeholder="CURP" />
+                        <div className="campo-grupo">
+                            <label> Selecciona el sexo </label>
+                            <select defaultValue="" id="sexo" name="sexo" onChange={formik.handleChange} value={formik.values.sexo}>
+                                <option value="" disabled>Seleccionar sexo</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                                <option value="O">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div className="campo-grupo">
+                            <label htmlFor="rfc"> Ingresa el RFC </label>
+                            <input type="text" placeholder="Ej: MOGF780404S36" id="rfc" name="rfc" onChange={formik.handleChange} value={formik.values.rfc}/>
+                        </div>
 
-                        <select defaultValue="">
-                            <option value="" disabled>Selecciona tipo de ayudante</option>
-                            <option value="Voluntario">Voluntario</option>
-                            <option value="Empleado">Empleado</option>
-                        </select>
+                        <div className="campo-grupo">
+                            <label htmlFor="curp"> Ingresa la CURP </label>
+                            <input type="text" placeholder="Ej: PEGJ900314HDFMRN00" id="curp" name="curp" onChange={formik.handleChange} value={formik.values.curp}/>
+                        </div>
+                        
+                        <div className="campo-grupo">
+                            <label htmlFor="empleadoVoluntario"> Voluntario o empleado </label>
+                            <select defaultValue="" id="empleadoVoluntario" name="empleadoVoluntario" onChange={formik.handleChange} value={formik.values.empleadoVoluntario}>
+                                <option value="" disabled>Selecciona tipo de ayudante</option>
+                                <option value="Voluntario">Voluntario</option>
+                                <option value="Empleado">Empleado</option>
+                            </select>
+                        </div>
+                        
+                        <div className="campo-grupo">
+                            <label> Eleccion de rol </label>
+                            <select defaultValue="" id="rolid" name="rolid" onChange={formik.handleChange} value={formik.values.rolid}>
+                                <option value="" disabled>Seleccionar rol</option>
+                            </select>
+                        </div>
 
-                        <select defaultValue="">
-                            <option value="" disabled>Seleccionar rol</option>
-                            <option value="Coordinador">Coordinador</option>
-                            <option value="Psicologo">Psicólogo</option>
-                            <option value="Doctor">Doctor</option>
-                            <option value="Abogado">Abogado</option>
-                            <option value="Trabajador Social">Trabajador Social</option>
-                            <option value="Analista">Analista</option>
-                        </select>
 
-                        <input type="text" placeholder="Correo"/>
-                        <input type="text" className="Contraseña" placeholder="Contraseña"/>
+                        <div className="campo-grupo">
+                            <label htmlFor="correo"> Ingresa el correo </label>
+                            <input type="email" placeholder="Correo" id="email" name="email" onChange={formik.handleChange} value={formik.values.email}/>
+                        </div>
+                        
+                        <div className="campo-grupo">
+                            <label htmlFor="codigoPostal"> Ingrese su código postal </label>
+                            <input type="number" placeholder="Codigo Postal" id="codigoPostal" name="codigoPostal" onChange={formik.handleChange} value={formik.values.codigoPostal}/>
+                        </div>
 
-                        <input type="number" placeholder="Codigo Postal"/>
-                        <select name="" id="">
-                            <option value="" selected>Municipio</option>
-                            <option value="">Gustavo A. Madero</option>
-                            <option value="">Benito Juarez</option>
-                        </select>
-                        <select name="" id="">
-                            <option value="" selected>Colonia</option>
-                            <option value="">Valle De Madero</option>
-                            <option value="">Gustavo Diaz Ordaz</option>
-                        </select>
-                        <input type="text" placeholder="Dirección" className="direccion" />
+                        <div className="campo-grupo">
+                            <select name="estadoNombre" id="estadoNombre" defaultValue="estadoNombre" onChange={formik.handleChange} value={formik.values.estadoNombre}>
+                                <option value="" selected>Estado</option>
+                            </select>
+                        </div>
+                        
+                        <div className="campo-grupo">
+                            <select name="municipioNombre" id="municipioNombre" defaultValue="municipioNombre" onChange={formik.handleChange} value={formik.values.municipioNombre}>
+                                <option value="" selected>Municipio</option>
+                            </select>
+                        </div>
+                        
+                        <div className="campo-grupo">
+                            <select name="coloniaNombre" id="coloniaNombre" defaultValue="coloniaNombre" onChange={formik.handleChange} value={formik.values.coloniaNombre}>
+                                <option value="" selected>Colonia</option>
+                            </select>
+                        </div>
+
+                        <div className="campo-grupo">
+                            <label htmlFor="calle"> Ingresa la calle </label>
+                            <input type="text" placeholder="Ej: Cerro Colmena" id="calle" name="calle" onChange={formik.handleChange} value={formik.values.calle}/>
+                        </div>
+
+                        <div className="campo-grupo radio-columna">
+                            <label>¿Tiene numero interior o exterior?</label>
+                            <div className="radio-opciones">
+                                <div className="opcion-item">
+                                    <input type="radio" id="si" name="sn" onChange={formik.handleChange} value={formik.values.sn}/>
+                                    <label htmlFor="si">Sí</label>
+                                </div>
+                                <div className="opcion-item">
+                                    <input type="radio" id="no" name="sn" onChange={formik.handleChange} value={formik.values.sn} />
+                                    <label htmlFor="no">No</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="campo-grupo">
+                            <label htmlFor="numExterior"> Ingrese su numero exterior </label>
+                            <input type="number" placeholder="Ej: 35" id="numExterior" name="numExterior" onChange={formik.handleChange} value={formik.values.numExterior}/>
+                        </div>
+
+                        <div className="campo-grupo">
+                            <label htmlFor="numInterior"> Ingrese su numero interior </label>
+                            <input type="number" placeholder="Ej: 40" id="numInterior" name="numInterior" onChange={formik.handleChange} value={formik.values.numInterior}/>
+                        </div>
+
+                        <div className="campo-grupo">
+                            <label htmlFor="referencia"> Ingresa una referencia </label>
+                        </div>
+                        <input type="text" className="direccion" placeholder="Ej: Frente al parque" id="referencia" name="referencia" onChange={formik.handleChange} value={formik.values.referencia}/>
 
                         <button type="submit" className="btn-registrar">
                             Registrar
