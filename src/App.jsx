@@ -2,6 +2,7 @@ import { Routes, Route} from 'react-router-dom'
 import Index from './pages/Index'
 import ConsultarEmpleados from './pages/ConsultarEmpleados'
 import RegistrarEmpleado from './pages/RegistrarEmpleado'
+import Login from './pages/Login'
 
 function App() {
 
