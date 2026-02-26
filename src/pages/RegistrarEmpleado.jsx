@@ -2,77 +2,44 @@ import { useState, useEffect } from "react"
 import Header from "./components/Header"
 import "../styles/registrarEmpleado.css"
 import { useFormik } from 'formik'
+import axiosInstance from "../api/axiosInstance";
 
-    const generarPassword = (longitud = 12) => {
-        const caracteres =
-            "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+const generarPassword = (longitud = 12) => {
+    const caracteres =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
 
-        let password = "";
-        for (let i = 0; i < longitud; i++) {
-            const randomIndex = Math.floor(Math.random() * caracteres.length);
-            password += caracteres[randomIndex];
-        }
+    let password = "";
+    for (let i = 0; i < longitud; i++) {
+        const randomIndex = Math.floor(Math.random() * caracteres.length);
+        password += caracteres[randomIndex];
+    }
 
-        return password;
-    };
+    return password;
+};
 
 const valoresIniciales = {
-            nombre: '',
-            primerApellido: '',
-            segundoApellido: '',
-            fechaNacimiento: '',
-            sexo: '',
-            rfc: '',
-            curp: '',
-            empleadoVoluntario: '',
-            rolid: '',
-            email: '',
-            codigoPostal: '',
-            estadoNombre: '',
-            estadoClave: '',
-            municipioNombre: '',
-            coloniaNombre: '',
-            calle: '',
-            sn: '',
-            numExterior: '',
-            numInterior: '',
-            referencia: ''
-        }
-const onSubmit = async (values) => {
+    nombre: '',
+    primerApellido: '',
+    segundoApellido: '',
+    fechaNacimiento: '',
+    sexo: '',
+    rfc: '',
+    curp: '',
+    empleadoVoluntario: '',
+    rolId: '',
+    email: '',
+    codigoPostal: '',
+    estadoNombre: '',
+    estadoClave: '',
+    municipioNombre: '',
+    coloniaNombre: '',
+    calle: '',
+    sn: '',
+    numExterior: '',
+    numInterior: '',
+    referencia: ''
+}
 
-            const payload = {
-                ...values,
-                numExterior: values.numExterior === "" ? null : Number(values.numExterior),
-                numInterior: values.numInterior === "" ? null : Number(values.numInterior),
-                estadoClave: values.estadoClave,
-                municipioClave: values.municipioClave,
-                rolId: Number(values.rolid),
-                empleadoVoluntario: values.empleadoVoluntario === "Empleado" ? 1 : 0,
-                activo: 1,
-                password: generarPassword(12), // temporal
-                urlIMG: "https://res.cloudinary.com/dbb56iwkk/image/upload/t_media_lib_thumb/cld-sample.jpg"
-            }
-
-            try {
-                const response = await fetch("http://localhost:3000/api/usuarios", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(payload)
-                })
-
-                const data = await response.json()
-
-                console.log("Usuario creado:", data)
-
-                alert("Usuario registrado correctamente")
-
-            } catch (error) {
-                console.error("Error:", error)
-                alert("Error al registrar")
-            }
-        }
 
 const validacion = values => {
     let errors = {}
@@ -98,9 +65,9 @@ const validacion = values => {
     }
 
     if (!values.empleadoVoluntario) errors.empleadoVoluntario = 'Seleccione una opción';
-    
+
     // Rol
-    if (!values.rolid) errors.rolid = 'Seleccione una opción';
+    if (!values.rolId) errors.rolId = 'Seleccione una opción';
 
     // Email
     if (!values.email) {
@@ -125,15 +92,41 @@ const validacion = values => {
     }
 
     if (values.sn === 'si') {
-    if (!values.numExterior) {
-        errors.numExterior = 'Este campo es obligatorio';
+        if (!values.numExterior) {
+            errors.numExterior = 'Este campo es obligatorio';
+        }
+        if (!values.numInterior) {
+            errors.numInterior = 'Este campo es obligatorio';
+        }
     }
-    if (!values.numInterior) {
-        errors.numInterior = 'Este campo es obligatorio';
-    }
-}
 
     return errors
+}
+
+const onSubmit = async (values) => {
+
+    const payload = {
+        ...values,
+        numExterior: values.numExterior === "" ? null : Number(values.numExterior),
+        numInterior: values.numInterior === "" ? null : Number(values.numInterior),
+        estadoClave: values.estadoClave,
+        municipioClave: values.municipioClave,
+        rolId: Number(values.rolId),
+        empleadoVoluntario: values.empleadoVoluntario === "Empleado" ? 1 : 0,
+        activo: 1,
+        password: generarPassword(12), // temporal
+        urlIMG: "https://res.cloudinary.com/dbb56iwkk/image/upload/t_media_lib_thumb/cld-sample.jpg"
+    }
+
+    try {
+        const response = await axiosInstance.post("/usuarios/crearUsuario", payload);
+
+        console.log("Usuario creado:", response.data);
+
+    } catch (error) {
+        console.error("Error:", error)
+        alert("Error al registrar")
+    }
 }
 
 function RegistrarEmpleado() {
@@ -153,19 +146,19 @@ function RegistrarEmpleado() {
     const [roles, setRoles] = useState([])
 
     useEffect(() => {
-        const obtenerRoles = async () => {
-            try {
-                const response = await fetch("http://localhost:3000/api/roles")
-                const data = await response.json()
-
-                setRoles(data) // suponiendo que devuelve un array
-            } catch (error) {
-                console.error("Error obteniendo roles:", error)
+            const obtenerRoles = async () => {
+                try {
+                    const response = await fetch("http://localhost:3000/api/roles")
+                    const data = await response.json()
+    
+                    setRoles(data) // suponiendo que devuelve un array
+                } catch (error) {
+                    console.error("Error obteniendo roles:", error)
+                }
             }
-        }
-
-        obtenerRoles()
-    }, [])
+    
+            obtenerRoles()
+        }, [])
 
     useEffect(() => {
         const cp = formik.values.codigoPostal
@@ -207,24 +200,6 @@ function RegistrarEmpleado() {
             <section className="registro">
 
                 <div className="formulario-contenedor">
-
-                    <div className="foto-container">
-
-                        <div className="foto-preview">
-                            {imagen ? (
-                                <img src={imagen} alt="Preview" />
-                            ) : (
-                                <span>Foto</span>
-                            )}
-                        </div>
-
-                        <input
-                            type="file"
-                            accept="image/*"
-                            onChange={manejarImagen}
-                        />
-
-                    </div>
 
                     <form className="formulario" onSubmit={formik.handleSubmit}>
                         <div className="campo-grupo">
@@ -287,8 +262,8 @@ function RegistrarEmpleado() {
                         <div className="campo-grupo">
                             <label> Elección de rol </label>
                             <select
-                                id="rolid"
-                                name="rolid"
+                                id="rolId"
+                                name="rolId"
                                 onChange={formik.handleChange}
                                 value={formik.values.rolid}
                             >
@@ -300,7 +275,7 @@ function RegistrarEmpleado() {
                                     </option>
                                 ))}
                             </select>
-                            {formik.errors.rolid ? (<div className="error">{formik.errors.rolid}</div>):null}
+                            {formik.errors.rolId ? (<div className="error">{formik.errors.rolId}</div>):null}
                         </div>
 
 
@@ -408,3 +383,4 @@ function RegistrarEmpleado() {
 }
 
 export default RegistrarEmpleado
+

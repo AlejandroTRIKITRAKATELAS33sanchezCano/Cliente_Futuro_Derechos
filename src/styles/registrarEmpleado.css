@@ -200,13 +200,9 @@ input[type="checkbox"] {
     cursor: pointer;
     /* Aplicamos el color de tu botón registrar */
     accent-color: #c084fc; 
-<<<<<<< HEAD
 }
 
 .error {
     color: red;
 }
->>>>>>> Stashed changes
-=======
-}
->>>>>>> 907b0fa59d01a5afb709ce37cfe900de2fe31e82
+
