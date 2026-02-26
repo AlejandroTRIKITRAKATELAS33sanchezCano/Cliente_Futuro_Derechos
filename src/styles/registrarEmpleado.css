@@ -196,3 +196,8 @@ input[type="checkbox"] {
     /* Aplicamos el color de tu botón registrar */
     accent-color: #c084fc; 
 }
+
+.error {
+    color: red;
+}
+
