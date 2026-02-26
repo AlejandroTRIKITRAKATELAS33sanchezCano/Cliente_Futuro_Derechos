@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import Header from "./components/Header"
 import "../styles/registrarEmpleado.css"
 import { useFormik } from 'formik'
+import axiosInstance from "../api/axiosInstance";
 
 function RegistrarEmpleado() {
 
@@ -56,19 +57,9 @@ function RegistrarEmpleado() {
             }
 
             try {
-                const response = await fetch("http://localhost:3000/api/usuarios/crearUsuario", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(payload)
-                })
+                const response = await axiosInstance.post("/usuarios/crearUsuario", payload);
 
-                const data = await response.json()
-
-                console.log("Usuario creado:", data)
-
-                alert("Usuario registrado correctamente")
+                console.log("Usuario creado:", response.data);
 
             } catch (error) {
                 console.error("Error:", error)
@@ -88,10 +79,8 @@ function RegistrarEmpleado() {
     useEffect(() => {
         const obtenerRoles = async () => {
             try {
-                const response = await fetch("http://localhost:3000/api/roles")
-                const data = await response.json()
-
-                setRoles(data) // suponiendo que devuelve un array
+                const response = await axiosInstance.get("/roles");
+                setRoles(response.data);
             } catch (error) {
                 console.error("Error obteniendo roles:", error)
             }

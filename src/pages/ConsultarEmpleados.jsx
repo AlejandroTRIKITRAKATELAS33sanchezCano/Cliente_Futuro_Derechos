@@ -3,7 +3,7 @@ import Header from "./components/Header"
 import Buscador from "./components/Buscador"
 import "../styles/ConsultarEmpleados.css";
 import { useEffect, useState } from "react";
-import axiosInstance from "../api/axios.js";
+import axiosInstance from "../api/axiosInstance";
 
 function ConsultarEmpleados() {
 

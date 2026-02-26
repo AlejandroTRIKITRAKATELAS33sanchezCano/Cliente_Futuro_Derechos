@@ -36,10 +36,10 @@ function Login() {
                 }
             );
 
-            // Guardar token
+            //Guardar token
             localStorage.setItem("token", response.data.token);
 
-            // Redirigir
+            //Redirigir
             navigate("/administrador/consultarEmpleados");
 
         } catch (err) {
