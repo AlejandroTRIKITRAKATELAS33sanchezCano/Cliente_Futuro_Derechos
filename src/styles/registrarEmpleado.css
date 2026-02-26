@@ -4,6 +4,12 @@
     min-height: 100vh;
 }
 
+label {
+    font-weight: bold;
+    display: flex;
+    margin-bottom: 5px; 
+}
+
 .titulo {
     text-align: center;
     font-size: 24px;
@@ -48,10 +54,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    align-items: end;
 }
 
 .formulario input,
 .formulario select {
+    width: 100%;
     padding: 12px;
     border-radius: 12px;
     border: none;
@@ -59,6 +67,7 @@
     font-size: 14px;
     outline: none;
     transition: 0.2s ease;
+    box-sizing: border-box;
 }
 
 .formulario input:focus,
@@ -92,8 +101,11 @@
     background-color: #a855f7;
     transform: scale(1.02);
 }
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+>>>>>>> 907b0fa59d01a5afb709ce37cfe900de2fe31e82
 
 .campo-grupo {
     display: grid;
@@ -188,9 +200,13 @@ input[type="checkbox"] {
     cursor: pointer;
     /* Aplicamos el color de tu botón registrar */
     accent-color: #c084fc; 
+<<<<<<< HEAD
 }
 
 .error {
     color: red;
 }
 >>>>>>> Stashed changes
+=======
+}
+>>>>>>> 907b0fa59d01a5afb709ce37cfe900de2fe31e82

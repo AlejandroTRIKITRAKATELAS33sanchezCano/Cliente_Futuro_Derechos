@@ -1,26 +1,154 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
 
-.header{
+.header {
     width: 100%;
     height: 90px;
     display: flex;
-    flex-wrap:wrap;
     align-items: center;
     justify-content: space-between;
     border-bottom: solid 3px #000;
+    /* Agregamos padding para que no pegue a los bordes de la pantalla */
+    padding: 0 40px; 
+    box-sizing: border-box; 
 }
 
-.header img{
+.header img {
     max-height: 80px;
     width: 100px;
 }
 
-.logo{
-    width: 250px;
+.logo {
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    font-family: 'Cinzel', serif;
-    color: var(--color-secundario);
+    gap: 15px; /* Usamos gap en lugar de space-between para controlar mejor el espacio entre el logo y el texto */
+    font-family: 'Merriweather', serif;
+    color: var(--color-secundario); /* Asegúrate de tener esta variable definida, o usa #000 */
+}
+
+.logo h3 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+/* --- Estilos Nuevos para la sección derecha --- */
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 30px; /* Separación entre el perfil y el menú */
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    /* Añadimos el borde azul que se ve en el diseño de Figma */
+    border: 2px solid #000; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+}
+
+.avatar svg {
+    width: 24px;
+    height: 24px;
+}
+
+.user-name {
+    font-family: 'Merriweather', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    /* Color verde oliva basado en tu diseño de Figma */
+    color: #5b5321; 
+}
+
+.menu-contenedor {
+    position: relative;
+}
+
+.menu-icon {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+}
+
+/* Pequeño efecto al pasar el mouse por el ícono del menú */
+.menu-icon:hover {
+    transform: scale(1.1);
+}
+
+.menu-icon svg {
+    width: 40px;
+    height: 40px;
+    color: #000;
+}
+
+/* El cuadro blanco flotante del menú */
+.menu-desplegable {
+    position: absolute;
+    top: 50px; /* Lo empuja hacia abajo del ícono */
+    right: 0;  /* Lo alinea a la derecha */
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    width: 200px;
+    z-index: 1000; /* Asegura que se muestre por encima de la tabla y otros elementos */
+    /* Animación de entrada opcional */
+    animation: fadeIn 0.2s ease-in-out;
+}
+
+.menu-lista {
+    list-style: none; /* Quita los puntos de la lista */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-family: var(--fuente-cuerpo, sans-serif); /* Usa la variable si la configuraste antes */
+    font-size: 15px;
+    color: #374151;
+    transition: background-color 0.2s ease;
+}
+
+/* Efecto al pasar el mouse por cada opción */
+.menu-item:hover {
+    background-color: #f3e8ff; /* El mismo morado claro que usas en la tabla */
+    color: #4a0072;
+}
+
+/* Línea separadora antes de "Cerrar sesión" */
+.menu-divisor {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 4px 0;
+}
+
+/* Estilo especial para la opción de salir */
+.menu-item.salir {
+    color: #dc2626; /* Rojo para indicar una acción destructiva/salida */
+}
+
+.menu-item.salir:hover {
+    background-color: #fee2e2; /* Fondo rojizo claro */
+}
+
+/* Keyframe para que el menú aparezca suavemente */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

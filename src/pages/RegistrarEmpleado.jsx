@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Header from "./components/Header"
 import "../styles/registrarEmpleado.css"
 import { useFormik } from 'formik'

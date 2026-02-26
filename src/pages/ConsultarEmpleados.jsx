@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "./components/Header"
 import Tabla from "./components/Tabla"
 import Buscador from "./components/Buscador"
@@ -15,4 +16,4 @@ function ConsultarEmpleados() {
     )
 }
 
-export default ConsultarEmpleados
+export default ConsultarEmpleados;
