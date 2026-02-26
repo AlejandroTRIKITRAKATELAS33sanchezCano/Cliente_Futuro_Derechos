@@ -92,3 +92,105 @@
     background-color: #a855f7;
     transform: scale(1.02);
 }
+<<<<<<< Updated upstream
+=======
+
+.campo-grupo {
+    display: grid;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-grupo label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 0;
+}
+
+input[type="date"] {
+    /* Quita el estilo de "botón" 3D del navegador */
+    appearance: none;
+    -webkit-appearance: none;
+    
+    /* Copia los estilos de tus otros campos */
+    background-color: #dcdcdc; /* El gris que estás usando */
+    border: none;
+    border-radius: 12px; /* Ajusta este valor según tus otros campos */
+    padding: 12px;
+    outline: none;
+}
+
+input[type="checkbox"] {
+    background-color: #a855f7;
+}   
+
+.checkbox-completo {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkbox-fila {
+    display: flex;
+    align-items: center; /* Centra verticalmente el cuadro con el texto */
+    gap: 10px;
+}
+
+.texto-derecha {
+    font-size: 14px;
+    font-weight: normal !important; /* Menos pesado que el label superior */
+    cursor: pointer;
+    margin-bottom: 0 !important;
+}
+
+.checkbox-fila input[type="checkbox"] {
+    width: 18px !important; /* Tamaño un poco más grande */
+    height: 18px !important;
+    cursor: pointer;
+    /* Aquí aplicamos el color de tu botón de registrar */
+    accent-color: #6a1b9a; /* Sustituye este código por el color exacto de tu .btn-registrar */
+}
+
+/* Contenedor de la sección de radio buttons */
+.radio-columna {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Alinea "Sí" y "No" en la misma fila */
+.radio-opciones {
+    display: flex;
+    gap: 30px; /* Espacio entre el grupo Sí y el grupo No */
+    align-items: center;
+    padding: 5px 0;
+}
+
+/* Alinea el circulito con su texto */
+.opcion-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Quita el margen inferior de los labels internos para que no se desalineen */
+.opcion-item label {
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+/* Color y tamaño de los Radio Buttons */
+.opcion-item input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    /* Aplicamos el color de tu botón registrar */
+    accent-color: #c084fc; 
+}
+
+.error {
+    color: red;
+}
+>>>>>>> Stashed changes
