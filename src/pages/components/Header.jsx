@@ -47,7 +47,7 @@ function Header() {
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
                     </div>
-                    <span className="user-name">Virginia</span>
+                    <span className="user-name">Alejandro</span>
                 </div>
 
                 {/* 3. Le ponemos la etiqueta "ref" a todo el contenedor del menú */}

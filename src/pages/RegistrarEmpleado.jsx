@@ -3,6 +3,7 @@ import Header from "./components/Header"
 import "../styles/registrarEmpleado.css"
 import { useFormik } from 'formik'
 import axiosInstance from "../api/axiosInstance";
+import { useNavigate } from "react-router-dom"; //
 
 const generarPassword = (longitud = 12) => {
     const caracteres =
@@ -47,7 +48,26 @@ const validacion = values => {
     if (!values.nombre) errors.nombre = 'Este campo es obligatorio';
     if (!values.primerApellido) errors.primerApellido = 'Este campo es obligatorio';
     if (!values.segundoApellido) errors.segundoApellido = 'Este campo es obligatorio';
-    if (!values.fechaNacimiento) errors.fechaNacimiento = 'Este campo es obligatorio';
+    if (!values.fechaNacimiento){
+        errors.fechaNacimiento = 'Este campo es obligatorio';
+    } else{
+        const fechaNac = new Date(values.fechaNacimiento);
+        const hoy = new Date();
+        
+        // Calculamos la edad
+        let edad = hoy.getFullYear() - fechaNac.getFullYear();
+        const mes = hoy.getMonth() - fechaNac.getMonth();
+        
+        // Ajuste si aún no ha pasado su cumpleaños este año
+        if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNac.getDate())) {
+            edad--;
+        }
+
+        // Validación de minoría de edad
+        if (edad < 18) {
+            errors.fechaNacimiento = 'Debes ser mayor de edad para registrarte.';
+        }
+    }
     if (!values.sexo) errors.sexo = 'Seleccione una opción';
 
     // RFC
@@ -103,40 +123,46 @@ const validacion = values => {
     return errors
 }
 
-const onSubmit = async (values) => {
-
-    const payload = {
-        ...values,
-        numExterior: values.numExterior === "" ? null : Number(values.numExterior),
-        numInterior: values.numInterior === "" ? null : Number(values.numInterior),
-        estadoClave: values.estadoClave,
-        municipioClave: values.municipioClave,
-        rolId: Number(values.rolId),
-        empleadoVoluntario: values.empleadoVoluntario === "Empleado" ? 1 : 0,
-        activo: 1,
-        password: generarPassword(12), // temporal
-        urlIMG: "https://res.cloudinary.com/dbb56iwkk/image/upload/t_media_lib_thumb/cld-sample.jpg"
-    }
-
-    try {
-        const response = await axiosInstance.post("/usuarios/crearUsuario", payload);
-
-        console.log("Usuario creado:", response.data);
-
-    } catch (error) {
-        console.error("Error:", error)
-        alert("Error al registrar")
-    }
-}
 
 function RegistrarEmpleado() {
+    const navigate = useNavigate();
+
+    const onSubmit = async (values) => {
+
+        const payload = {
+            ...values,
+            numExterior: values.numExterior === "" ? null : Number(values.numExterior),
+            numInterior: values.numInterior === "" ? null : Number(values.numInterior),
+            estadoClave: values.estadoClave,
+            municipioClave: values.municipioClave,
+            rolId: Number(values.rolId),
+            empleadoVoluntario: values.empleadoVoluntario === "Empleado" ? 1 : 0,
+            activo: 1,
+            password: generarPassword(12),
+            urlIMG: "https://res.cloudinary.com/dbb56iwkk/image/upload/t_media_lib_thumb/cld-sample.jpg"
+        }
+
+        try {
+            const response = await axiosInstance.post("/usuarios/crearUsuario", payload);
+
+            console.log("Usuario creado:", response.data);
+            alert("Usuario registrado correctamente");
+
+            navigate("/administrador/consultarEmpleados");
+
+        } catch (error) {
+            console.error("Error:", error)
+            const mensajeError = error.response?.data?.message || "Error al registrar";
+            alert(mensajeError);
+        }
+    }
 
     const formik = useFormik({
         initialValues: valoresIniciales,
         onSubmit: onSubmit,
         validate: validacion
-    }
-    )
+    });
+
     console.log('Form values', formik.values)
 
     const [colonias, setColonias] = useState([])
@@ -265,13 +291,13 @@ function RegistrarEmpleado() {
                                 id="rolId"
                                 name="rolId"
                                 onChange={formik.handleChange}
-                                value={formik.values.rolid}
+                                value={formik.values.rolId}
                             >
                                 <option value="" disabled>Seleccionar rol</option>
 
                                 {roles.map((rol) => (
                                     <option key={rol.idrol} value={rol.idrol}>
-                                        {rol.nombre}
+                                        {rol.rolnombre}
                                     </option>
                                 ))}
                             </select>
@@ -312,6 +338,9 @@ function RegistrarEmpleado() {
                                 onChange={formik.handleChange}
                                 value={formik.values.municipioNombre}
                             >
+                                <option value="">
+                                    Municipio
+                                </option>
                                 <option value={formik.values.municipioNombre}>
                                     {formik.values.municipioNombre}
                                 </option>
@@ -372,8 +401,8 @@ function RegistrarEmpleado() {
                         </div>
                         <input type="text" className="direccion" placeholder="Opcional" id="referencia" name="referencia" onChange={formik.handleChange} value={formik.values.referencia}/>
 
-                        <button type="submit" className="btn-registrar">
-                            Registrar
+                        <button type="submit" className="btn-registrar" disabled={!formik.isValid || formik.isSubmitting}>
+                            {formik.isSubmitting ? "Registrando..." : "Registrar"}
                         </button>
                     </form>
                 </div>
