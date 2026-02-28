@@ -34,7 +34,11 @@ function Tabla({ usuarios = [] }) {
                         </td>
 
                         <td className="celda-acciones">
-                            <button className="btn-ver-detalle">
+                             <Link 
+                                to={`/administrador/InfoEmpleado/${usuario.idusuario}`} 
+                                className="btn-ver-detalle"
+                                title="Ver detalles"
+                            >
                                 <svg
                                     viewBox="0 0 24 24"
                                     fill="none"
@@ -46,7 +50,7 @@ function Tabla({ usuarios = [] }) {
                                     <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                     <circle cx="12" cy="12" r="3"></circle>
                                 </svg>
-                            </button>
+                            </Link>
                         </td>
                     </tr>
                 ))}
