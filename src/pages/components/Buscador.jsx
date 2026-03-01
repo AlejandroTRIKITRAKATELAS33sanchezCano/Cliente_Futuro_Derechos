@@ -2,7 +2,7 @@ import "../../styles/buscador.css"
 import { Link } from "react-router-dom";
 
 //Recibimos las props que mandó ConsultarEmpleados
-function Buscador({ busqueda, setBusqueda }) {
+function Buscador({ busqueda, setBusqueda, mostrarBoton = true }) {
     return (
         <div className="buscador">
 
@@ -23,8 +23,9 @@ function Buscador({ busqueda, setBusqueda }) {
                 />
             </div>
 
-
+            {mostrarBoton && (
             <Link to="/administrador/registrarEmpleado" className="buscador-btn">Nuevo Registro</Link>
+            )}
         </div>
     )
 }

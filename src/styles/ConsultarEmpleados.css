@@ -6,3 +6,30 @@ section {
     align-items: center;
     justify-content: center;
 }
+
+/* Contenedor principal para alinear verticalmente */
+.contenedor-controles-equipo {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los hijos horizontalmente */
+    gap: 15px;           /* Espacio entre la barra y el input */
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* Estilo específico para el input de la clave */
+.input-clave-equipo {
+    width: 100%;
+    max-width: 400px;    /* Ajusta este ancho a tu gusto */
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Redondeado para hacer match con el buscador */
+    text-align: center;  /* Centra el texto que escribe el usuario */
+    outline: none;
+    font-size: 1rem;
+}
+
+.input-clave-equipo:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
+}
