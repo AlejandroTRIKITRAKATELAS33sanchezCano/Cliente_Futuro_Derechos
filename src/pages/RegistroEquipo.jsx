@@ -23,18 +23,18 @@ function RegistroEquipo() {
         obtenerUsuarios();
     }, []);
 
-    // Filtrar usuarios para la tabla de búsqueda
+    //Filtrar usuarios para la tabla de búsqueda
     const usuariosFiltrados = usuarios.filter((usuario) =>
         usuario.nombre_completo?.toLowerCase().includes(busqueda.toLowerCase()) &&
         !equipoSeleccionado.find(u => u.idusuario === usuario.idusuario) // No mostrar si ya está en el equipo
     );
 
-    // Función para añadir al equipo
+    //Función para añadir al equipo
     const agregarAlEquipo = (usuario) => {
         setEquipoSeleccionado([...equipoSeleccionado, usuario]);
     };
 
-    // Función para quitar del equipo
+    //Función para quitar del equipo
     const quitarDelEquipo = (id) => {
         setEquipoSeleccionado(equipoSeleccionado.filter(u => u.idusuario !== id));
     };
