@@ -102,6 +102,7 @@ label {
     transform: scale(1.02);
 }
 
+
 .campo-grupo {
     display: grid;
     flex-direction: column;
@@ -200,4 +201,5 @@ input[type="checkbox"] {
 .error {
     color: red;
 }
+
 

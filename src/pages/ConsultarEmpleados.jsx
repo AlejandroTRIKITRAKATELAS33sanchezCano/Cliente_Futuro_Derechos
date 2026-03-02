@@ -13,23 +13,27 @@ function ConsultarEmpleados() {
     const [usuarios, setUsuarios] = useState([]);
 
     useEffect(() => {
-    const obtenerUsuarios = async () => {
-        try {
-            const response = await axiosInstance.get("/usuarios");
-            setUsuarios(response.data);
-        } catch (error) {
-            console.error("Error:", error.response?.data || error.message);
-        }
-    };
+        const obtenerUsuarios = async () => {
+            try {
+                const response = await axiosInstance.get("/usuarios");
+                setUsuarios(response.data);
+            } catch (error) {
+                console.error("Error:", error.response?.data || error.message);
+            }
+        };
 
-    obtenerUsuarios();
-}, []);
-    // Filtramos los datos: si el nombre incluye lo que está en 'busqueda', lo conservamos
-    const usuariosFiltrados = usuarios.filter((usuario) =>
-        usuario.nombre_completo
-            ?.toLowerCase()
-            .includes(busqueda.toLowerCase())
-    );
+        obtenerUsuarios();
+    }, []);
+
+    // Filtramos los datos: si el nombre o el RFC incluyen lo que está en 'busqueda', lo conservamos
+    const usuariosFiltrados = usuarios.filter((usuario) => {
+        const termino = busqueda.toLowerCase();
+        
+        const coincideNombre = usuario.nombre_completo?.toLowerCase().includes(termino);
+        const coincideRFC = usuario.usurfc?.toLowerCase().includes(termino);
+
+        return coincideNombre || coincideRFC;
+    });
 
     return (
         <>
@@ -41,4 +45,5 @@ function ConsultarEmpleados() {
         </>
     )
 }
+
 export default ConsultarEmpleados;

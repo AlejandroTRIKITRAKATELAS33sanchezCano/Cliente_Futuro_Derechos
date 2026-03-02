@@ -41,6 +41,7 @@
     flex: 1;
     background-color: transparent; /* Se vuelve transparente para mostrar el color del contenedor */
     border: none;
+    align-items: center;
     outline: none;
     color: #333; /* Texto oscuro para contrastar con el fondo claro */
     font-size: 16px;

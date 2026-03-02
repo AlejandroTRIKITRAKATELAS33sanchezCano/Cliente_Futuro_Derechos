@@ -35,7 +35,8 @@ const valoresIniciales = {
     municipioNombre: '',
     coloniaNombre: '',
     calle: '',
-    sn: '',
+    sni: '',
+    sne: '',
     numExterior: '',
     numInterior: '',
     referencia: ''
@@ -106,19 +107,26 @@ const validacion = values => {
     if (!values.coloniaNombre) errors.coloniaNombre = 'Seleccione una opción';
     if (!values.calle) errors.calle = 'Este campo es obligatorio';
 
-    // sn
-    if (!values.sn) {
-        errors.sn = 'Seleccione una opción';
+    // sni
+    if (!values.sni) {
+        errors.sni = 'Seleccione una opción';
     }
 
-    if (values.sn === 'si') {
-        if (!values.numExterior) {
-            errors.numExterior = 'Este campo es obligatorio';
-        }
+    if (values.sni === 'si') {
         if (!values.numInterior) {
             errors.numInterior = 'Este campo es obligatorio';
         }
     }
+    // sne
+     if (!values.sne) {
+        errors.sne = 'Seleccione una opción';
+    }
+
+    if (values.sne === 'si') {
+        if (!values.numExterior) {
+            errors.numExterior = 'Este campo es obligatorio';
+        }
+    }   
 
     return errors
 }
@@ -170,6 +178,7 @@ function RegistrarEmpleado() {
     const [municipioClave, setMunicipioClave] = useState('')
     const [direccionBloqueada, setDireccionBloqueada] = useState(false)
     const [roles, setRoles] = useState([])
+    const [curp, setCurp] = useState([])
 
     useEffect(() => {
             const obtenerRoles = async () => {
@@ -370,14 +379,35 @@ function RegistrarEmpleado() {
                         </div>
 
                         <div className="campo-grupo radio-columna">
-                            <label>¿Tiene numero interior o exterior?</label>
+                            <label>¿Tiene numero interior?</label>
                             <div className="radio-opciones">
                                 <div className="opcion-item">
-                                    <input type="radio" id="si" name="sn" onChange={formik.handleChange} value="si" checked={formik.values.sn === "si"}/>
+                                    <input type="radio" id="si_i" name="sni" onChange={formik.handleChange} value="si" checked={formik.values.sni === "si"}/>
                                     <label htmlFor="si">Sí</label>
                                 </div>
                                 <div className="opcion-item">
-                                    <input type="radio" id="no" name="sn" onChange={formik.handleChange} value="no" checked={formik.values.sn === "no"} />
+                                    <input type="radio" id="no_i" name="sni" onChange={formik.handleChange} value="no" checked={formik.values.sni === "no"} />
+                                    <label htmlFor="no">No</label>
+                                </div>
+                            </div>
+                            {formik.errors.sn ? (<div className="error">{formik.errors.sn}</div>) : null}
+                        </div>
+
+                        <div className="campo-grupo">
+                            <label htmlFor="numInterior"> Ingrese su numero interior </label>
+                            <input type="number" placeholder="Ej: 40" id="numInterior" name="numInterior" onChange={formik.handleChange} value={formik.values.numInterior} disabled={formik.values.sni === "no"}/>
+                            {formik.errors.numInterior ? (<div className="error">{formik.errors.numInterior}</div>):null}
+                        </div>
+
+                        <div className="campo-grupo radio-columna">
+                            <label>¿Tiene numero exterior?</label>
+                            <div className="radio-opciones">
+                                <div className="opcion-item">
+                                    <input type="radio" id="si_e" name="sne" onChange={formik.handleChange} value="si" checked={formik.values.sne === "si"}/>
+                                    <label htmlFor="si">Sí</label>
+                                </div>
+                                <div className="opcion-item">
+                                    <input type="radio" id="no_e" name="sne" onChange={formik.handleChange} value="no" checked={formik.values.sne === "no"} />
                                     <label htmlFor="no">No</label>
                                 </div>
                             </div>
@@ -386,20 +416,16 @@ function RegistrarEmpleado() {
 
                         <div className="campo-grupo">
                             <label htmlFor="numExterior"> Ingrese su numero exterior </label>
-                            <input type="number" placeholder="Ej: 35" id="numExterior" name="numExterior" onChange={formik.handleChange} value={formik.values.numExterior} disabled={formik.values.sn === "no"} />
+                            <input type="number" placeholder="Ej: 35" id="numExterior" name="numExterior" onChange={formik.handleChange} value={formik.values.numExterior} disabled={formik.values.sne === "no"} />
                             {formik.errors.numExterior ? (<div className="error">{formik.errors.numExterior}</div>):null}
                         </div>
 
-                        <div className="campo-grupo">
-                            <label htmlFor="numInterior"> Ingrese su numero interior </label>
-                            <input type="number" placeholder="Ej: 40" id="numInterior" name="numInterior" onChange={formik.handleChange} value={formik.values.numInterior} disabled={formik.values.sn === "no"}/>
-                            {formik.errors.numInterior ? (<div className="error">{formik.errors.numInterior}</div>):null}
-                        </div>
 
-                        <div className="campo-grupo">
+                        <div className="direccion">
                             <label htmlFor="referencia"> Ingresa una referencia </label>
+                            <input type="text" placeholder="Opcional" id="referencia" name="referencia" onChange={formik.handleChange} value={formik.values.referencia}/>
                         </div>
-                        <input type="text" className="direccion" placeholder="Opcional" id="referencia" name="referencia" onChange={formik.handleChange} value={formik.values.referencia}/>
+                        
 
                         <button type="submit" className="btn-registrar" disabled={!formik.isValid || formik.isSubmitting}>
                             {formik.isSubmitting ? "Registrando..." : "Registrar"}

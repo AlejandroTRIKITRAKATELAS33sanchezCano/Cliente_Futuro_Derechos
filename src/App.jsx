@@ -3,6 +3,8 @@ import ConsultarEmpleados from './pages/ConsultarEmpleados'
 import RegistrarEmpleado from './pages/RegistrarEmpleado'
 import InfoEmpleado from './pages/InfoEmpleado'
 import Login from './pages/Login'
+import RegistroEquipo from './pages/RegistroEquipo'
+import ConsultaEquipo from './pages/ConsultaEquipo'
 import RutasProtegidas from './pages/components/RutasProtegidas'
 
 function App() {
@@ -38,6 +40,8 @@ function App() {
           </RutasProtegidas>
         }
       />
+      <Route path='/administrador/registroEquipo' element={<RegistroEquipo/>}/>
+      <Route path='/administrador/consultaEquipo' element={<ConsultaEquipo/>}/>
     </Routes>
   )
 }
