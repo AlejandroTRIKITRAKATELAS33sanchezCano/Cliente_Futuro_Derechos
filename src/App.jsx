@@ -3,17 +3,41 @@ import ConsultarEmpleados from './pages/ConsultarEmpleados'
 import RegistrarEmpleado from './pages/RegistrarEmpleado'
 import InfoEmpleado from './pages/InfoEmpleado'
 import Login from './pages/Login'
+import RutasProtegidas from './pages/components/RutasProtegidas'
 
 function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<Login/>}/>
-      {//Rutas Administrador
-      }
-      <Route path='/administrador/consultarEmpleados' element={<ConsultarEmpleados/>}/>
-      <Route path='/administrador/registrarEmpleado' element={<RegistrarEmpleado/>}/>
-      <Route path='/administrador/InfoEmpleado/:id' element={<InfoEmpleado/>}/>
+      <Route path='/' element={<Login />} />
+
+      {/* Rutas Administrador */}
+      <Route
+        path='/administrador/consultarEmpleados'
+        element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <ConsultarEmpleados />
+          </RutasProtegidas>
+        }
+      />
+
+      <Route
+        path='/administrador/registrarEmpleado'
+        element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <RegistrarEmpleado />
+          </RutasProtegidas>
+        }
+      />
+
+      <Route
+        path='/administrador/InfoEmpleado/:id'
+        element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <InfoEmpleado />
+          </RutasProtegidas>
+        }
+      />
     </Routes>
   )
 }

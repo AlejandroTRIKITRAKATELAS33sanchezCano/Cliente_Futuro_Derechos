@@ -1,12 +1,11 @@
 import { useState, useEffect, useRef } from "react";
 import logo from "../../assets/img/logo.avif";
 import "../../styles/header.css";
-// Si vas a navegar a otras pantallas, descomenta la siguiente línea:
-// import { Link } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 
 function Header() {
     const [menuAbierto, setMenuAbierto] = useState(false);
-    
+
     // 1. Creamos la referencia
     const menuRef = useRef(null);
 
@@ -28,9 +27,33 @@ function Header() {
         };
     }, [menuAbierto]); // Solo se re-ejecuta si el estado del menú cambia
 
+    const token = localStorage.getItem("token");
+
     const toggleMenu = () => {
         setMenuAbierto(!menuAbierto);
     };
+
+    const navigate = useNavigate();
+
+    const cerrarSesion = () => {
+        // 1. Borrar token
+        localStorage.removeItem("token");
+
+        // 2. Cerrar menú
+        setMenuAbierto(false);
+
+        // 3. Redirigir al login
+        navigate("/", { replace: true });
+    };
+
+    let nombreUsuario = "Usuario";
+
+    if (token) {
+        try {
+            const payload = JSON.parse(atob(token.split(".")[1]));
+            nombreUsuario = payload.name || "Usuario";
+        } catch { }
+    }
 
     return (
         <nav className="header">
@@ -47,7 +70,7 @@ function Header() {
                             <circle cx="12" cy="7" r="4"></circle>
                         </svg>
                     </div>
-                    <span className="user-name">Alejandro</span>
+                    <span className="user-name">{nombreUsuario}</span>
                 </div>
 
                 {/* 3. Le ponemos la etiqueta "ref" a todo el contenedor del menú */}
@@ -65,7 +88,9 @@ function Header() {
                                 <li className="menu-item">Empleados</li>
                                 <li className="menu-item">Configuración</li>
                                 <hr className="menu-divisor" />
-                                <li className="menu-item salir">Cerrar Sesión</li>
+                                <li className="menu-item salir" onClick={cerrarSesion}>
+                                    Cerrar Sesión
+                                </li>
                             </ul>
                         </div>
                     )}

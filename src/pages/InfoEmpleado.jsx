@@ -211,13 +211,13 @@ function InfoEmpleado() {
 
                         <div className="campo-grupo">
                             <label htmlFor="rfc"> RFC </label>
-                            <input type="text" id="rfc" name="rfc" disabled={!isEditing} onChange={formik.handleChange} value={formik.values.rfc || ''} />
+                            <input type="text" id="rfc" name="rfc" disabled="true" onChange={formik.handleChange} value={formik.values.rfc || ''} />
                             {formik.errors.rfc ? (<div className="error">{formik.errors.rfc}</div>):null}
                         </div>
 
                         <div className="campo-grupo">
                             <label htmlFor="curp"> CURP </label>
-                            <input type="text" id="curp" name="curp" disabled={!isEditing} onChange={formik.handleChange} value={formik.values.curp || ''} />
+                            <input type="text" id="curp" name="curp" disabled="true" onChange={formik.handleChange} value={formik.values.curp || ''} />
                             {formik.errors.curp ? (<div className="error">{formik.errors.curp}</div>):null}
                         </div>
 
@@ -244,7 +244,7 @@ function InfoEmpleado() {
 
                         <div className="campo-grupo">
                             <label htmlFor="correo"> Correo </label>
-                            <input type="email" id="email" name="email" disabled={!isEditing} onChange={formik.handleChange} value={formik.values.email || ''} />
+                            <input type="email" id="email" name="email" disabled="true" onChange={formik.handleChange} value={formik.values.email || ''} />
                             {formik.errors.email ? (<div className="error">{formik.errors.email}</div>):null}
                         </div>
 
