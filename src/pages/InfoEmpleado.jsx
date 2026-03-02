@@ -9,7 +9,7 @@ const valoresIniciales = {
     nombre: '', primerApellido: '', segundoApellido: '', fechaNacimiento: '',
     sexo: '', rfc: '', curp: '', empleadoVoluntario: '', rolid: '', email: '',
     codigoPostal: '', estadoNombre: '', estadoClave: '', municipioNombre: '',
-    coloniaNombre: '', calle: '', sn: '', numExterior: '', numInterior: '', referencia: ''
+    coloniaNombre: '', calle: '',     sni: '', sne: '', numExterior: '', numInterior: '', referencia: ''
 };
 
 // Reutilizamos tu misma validación
@@ -32,11 +32,26 @@ const validacion = values => {
     else if (!/^[0-9]{5}$/.test(values.codigoPostal)) errors.codigoPostal = 'Formato de codigo postal no valido';
     if (!values.coloniaNombre) errors.coloniaNombre = 'Seleccione una opción';
     if (!values.calle) errors.calle = 'Este campo es obligatorio';
-    if (!values.sn) errors.sn = 'Seleccione una opción';
-    if (values.sn === 'si') {
-        if (!values.numExterior) errors.numExterior = 'Este campo es obligatorio';
-        if (!values.numInterior) errors.numInterior = 'Este campo es obligatorio';
+    // sni
+    if (!values.sni) {
+        errors.sni = 'Seleccione una opción';
     }
+
+    if (values.sni === 'si') {
+        if (!values.numInterior) {
+            errors.numInterior = 'Este campo es obligatorio';
+        }
+    }
+    // sne
+     if (!values.sne) {
+        errors.sne = 'Seleccione una opción';
+    }
+
+    if (values.sne === 'si') {
+        if (!values.numExterior) {
+            errors.numExterior = 'Este campo es obligatorio';
+        }
+    } 
     return errors;
 };
 
@@ -286,14 +301,14 @@ function InfoEmpleado() {
                         </div>
 
                         <div className="campo-grupo radio-columna">
-                            <label>¿Tiene numero interior o exterior?</label>
+                            <label>¿Tiene numero interior?</label>
                             <div className="radio-opciones">
                                 <div className="opcion-item">
-                                    <input type="radio" id="si" name="sn" disabled={!isEditing} onChange={formik.handleChange} value="si" checked={formik.values.sn === "si"}/>
+                                    <input type="radio" id="si_i" name="sni" onChange={formik.handleChange} value="si" checked={formik.values.sni === "si"}/>
                                     <label htmlFor="si">Sí</label>
                                 </div>
                                 <div className="opcion-item">
-                                    <input type="radio" id="no" name="sn" disabled={!isEditing} onChange={formik.handleChange} value="no" checked={formik.values.sn === "no"} />
+                                    <input type="radio" id="no_i" name="sni" onChange={formik.handleChange} value="no" checked={formik.values.sni === "no"} />
                                     <label htmlFor="no">No</label>
                                 </div>
                             </div>
@@ -301,15 +316,30 @@ function InfoEmpleado() {
                         </div>
 
                         <div className="campo-grupo">
-                            <label htmlFor="numExterior"> Numero exterior </label>
-                            <input type="number" id="numExterior" name="numExterior" disabled={!isEditing || formik.values.sn === "no"} onChange={formik.handleChange} value={formik.values.numExterior || ''} />
-                            {formik.errors.numExterior ? (<div className="error">{formik.errors.numExterior}</div>):null}
+                            <label htmlFor="numInterior"> Ingrese su numero interior </label>
+                            <input type="number" placeholder="Ej: 40" id="numInterior" name="numInterior" onChange={formik.handleChange} value={formik.values.numInterior} disabled={formik.values.sni === "no"}/>
+                            {formik.errors.numInterior ? (<div className="error">{formik.errors.numInterior}</div>):null}
+                        </div>
+
+                        <div className="campo-grupo radio-columna">
+                            <label>¿Tiene numero exterior?</label>
+                            <div className="radio-opciones">
+                                <div className="opcion-item">
+                                    <input type="radio" id="si_e" name="sne" onChange={formik.handleChange} value="si" checked={formik.values.sne === "si"}/>
+                                    <label htmlFor="si">Sí</label>
+                                </div>
+                                <div className="opcion-item">
+                                    <input type="radio" id="no_e" name="sne" onChange={formik.handleChange} value="no" checked={formik.values.sne === "no"} />
+                                    <label htmlFor="no">No</label>
+                                </div>
+                            </div>
+                            {formik.errors.sn ? (<div className="error">{formik.errors.sn}</div>) : null}
                         </div>
 
                         <div className="campo-grupo">
-                            <label htmlFor="numInterior"> Numero interior </label>
-                            <input type="number" id="numInterior" name="numInterior" disabled={!isEditing || formik.values.sn === "no"} onChange={formik.handleChange} value={formik.values.numInterior || ''}/>
-                            {formik.errors.numInterior ? (<div className="error">{formik.errors.numInterior}</div>):null}
+                            <label htmlFor="numExterior"> Ingrese su numero exterior </label>
+                            <input type="number" placeholder="Ej: 35" id="numExterior" name="numExterior" onChange={formik.handleChange} value={formik.values.numExterior} disabled={formik.values.sne === "no"} />
+                            {formik.errors.numExterior ? (<div className="error">{formik.errors.numExterior}</div>):null}
                         </div>
 
                         <div className="campo-grupo direccion">
