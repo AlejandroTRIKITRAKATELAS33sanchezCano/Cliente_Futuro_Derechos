@@ -12,7 +12,8 @@ function Tabla({ usuarios = [] }) {
                 <tr>
                     <th>Nombre</th>
                     <th>RFC</th>
-                    <th>CURP</th>
+                    <th>Rol</th>
+                    <th>Equipo</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
@@ -23,7 +24,11 @@ function Tabla({ usuarios = [] }) {
                     <tr key={usuario.idusuario || usuario.usurfc}>
                         <td>{usuario.nombre_completo}</td>
                         <td>{usuario.usurfc}</td>
-                        <td>{usuario.usucurp}</td>
+                        
+                        {/* Asegúrate de que los nombres de estas propiedades (rol y equipo_multidisciplinario) 
+                            coincidan con lo que te devuelve el backend */}
+                        <td>{usuario.rol}</td>
+                        <td>{usuario.equipo_multidisciplinario}</td>
 
                         <td>
                             <div

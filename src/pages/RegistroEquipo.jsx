@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axiosInstance from "../api/axiosInstance";
 import Header from "./components/Header";
-import Buscador from "./components/Buscador";
+import BuscadorSimple from "./components/BuscadorSimple";
 import TablaSeleccion from "./components/TablaSeleccion";
 import "../styles/ConsultarEmpleados.css"; // Reutilizamos estilos
 
@@ -67,7 +67,7 @@ function RegistroEquipo() {
                 <h2>Crear Equipo Multidisciplinario</h2>
 
             <div className="contenedor-controles-equipo">
-                <Buscador 
+                <BuscadorSimple 
                     busqueda={busqueda} 
                     setBusqueda={setBusqueda} 
                     mostrarBoton={false} 
@@ -98,13 +98,15 @@ function RegistroEquipo() {
                     tipoAccion="quitar" 
                 />
 
-                <button 
-                    className="buscador-btn" 
-                    onClick={guardarEquipo}
-                    style={{ marginTop: "20px", width: "100%", backgroundColor: "#28a745" }}
-                >
-                    Registrar Equipo Multidisciplinario
-                </button>
+                {/* NUEVO CONTENEDOR PARA EL BOTÓN */}
+                <div className="contenedor-boton-final">
+                    <button 
+                        className="buscador-btn btn-registrar-equipo" 
+                        onClick={guardarEquipo}
+                    >
+                        Registrar Equipo Multidisciplinario
+                    </button>
+                </div>
             </section>
         </>
     );

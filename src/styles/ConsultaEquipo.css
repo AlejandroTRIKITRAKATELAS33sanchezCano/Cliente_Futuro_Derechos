@@ -1,0 +1,117 @@
+/* --- FONDO GENERAL --- */
+.seccion-consulta-equipos {
+    padding: 40px;
+    background-color: #f4f4f4; /* El gris claro de tu otra pantalla */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titulo-equipos {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #333;
+}
+
+/* --- GRID DE TARJETAS --- */
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* --- DISEÑO DE LA TARJETA --- */
+.tarjeta-equipo {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden; 
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tarjeta-equipo:hover {
+    transform: translateY(-10px); 
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* --- CABECERA MORADA --- */
+.tarjeta-cabecera {
+    background-color: #4a0072; /* Tu morado principal */
+    width: 100%;
+    padding: 25px 20px; /* Relleno para que el título respire */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 4px solid #c084fc; /* Un acento con el morado claro de tus inputs */
+}
+
+.tarjeta-cabecera h3 {
+    margin: 0;
+    font-size: 24px;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+/* --- CUERPO BLANCO DE LA TARJETA --- */
+.tarjeta-cuerpo {
+    padding: 30px 20px; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    box-sizing: border-box;
+}
+
+/* --- LISTA DE INTEGRANTES --- */
+.lista-integrantes {
+    width: 100%;
+    flex-grow: 1; 
+    margin-bottom: 25px;
+}
+
+.subtitulo-lista {
+    font-weight: bold;
+    color: #4a0072; /* El subtítulo también en morado */
+    margin-bottom: 12px;
+    font-size: 15px;
+    text-align: left;
+}
+
+.integrante-item {
+    font-size: 14px;
+    color: #555;
+    margin: 8px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #f0f0f0;
+    text-align: left;
+}
+
+.integrante-item:last-child {
+    border-bottom: none;
+}
+
+/* --- BOTÓN TIPO "VER MÁS" CON TUS COLORES --- */
+.btn-ver-mas {
+    background-color: #5b5321; /* Tu color dorado/oliva */
+    color: white;
+    border: none;
+    border-radius: 30px; 
+    padding: 10px 35px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-ver-mas:hover {
+    background-color: #5e2593; /* El morado que usas al hacer hover */
+    transform: scale(1.05);
+}

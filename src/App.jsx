@@ -4,6 +4,7 @@ import RegistrarEmpleado from './pages/RegistrarEmpleado'
 import InfoEmpleado from './pages/InfoEmpleado'
 import Login from './pages/Login'
 import RegistroEquipo from './pages/RegistroEquipo'
+import ConsultaEquipo from './pages/ConsultaEquipo'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
       <Route path='/administrador/registrarEmpleado' element={<RegistrarEmpleado/>}/>
       <Route path='/administrador/InfoEmpleado/:id' element={<InfoEmpleado/>}/>
       <Route path='/administrador/registroEquipo' element={<RegistroEquipo/>}/>
+      <Route path='/administrador/consultaEquipo' element={<ConsultaEquipo/>}/>
     </Routes>
   )
 }

@@ -2,7 +2,7 @@ import "../../styles/buscador.css"
 import { Link } from "react-router-dom";
 
 //Recibimos las props que mandó ConsultarEmpleados
-function Buscador({ busqueda, setBusqueda }) {
+function BuscadorSimple({ busqueda, setBusqueda }) {
     return (
         <div className="buscador">
 
@@ -21,15 +21,8 @@ function Buscador({ busqueda, setBusqueda }) {
                     onChange={(e) => setBusqueda(e.target.value)} //Actualiza el estado al escribir
                 />
             </div>
-
-            {/* Nuevos botones con rutas temporales */}
-            <Link to="/administrador/registroEquipo" className="buscador-btn">Crear Equipo</Link>
-            <Link to="/administrador/consultaEquipo" className="buscador-btn">Consultar Equipos</Link>
-            
-            {/* Botón original */}
-            <Link to="/administrador/registrarEmpleado" className="buscador-btn">Nuevo Registro</Link>
         </div>
     )
 }
 
-export default Buscador;
+export default BuscadorSimple;

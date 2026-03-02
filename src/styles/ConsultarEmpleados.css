@@ -33,3 +33,25 @@ section {
     border-color: #28a745;
     box-shadow: 0 0 5px rgba(40, 167, 69, 0.3);
 }
+
+/* --- CONTENEDOR PARA EL BOTÓN FINAL --- */
+.contenedor-boton-final {
+    width: 100%; /* Obliga al contenedor a usar toda la fila en tu flexbox */
+    display: flex;
+    justify-content: center; /* Centra el botón horizontalmente */
+    margin-top: 50px; /* Lo empuja hacia abajo, separándolo de la tabla */
+    padding-bottom: 40px; /* Le da aire en la parte inferior de la pantalla */
+}
+
+/* --- ESTILO ESPECÍFICO DEL BOTÓN --- */
+.btn-registrar-equipo {
+    width: fit-content; /* El botón solo medirá lo que ocupa el texto */
+    padding: 12px 25px; /* Un relleno proporcionado para que no se vea gigante */
+    background-color: #28a745; /* Puedes cambiar este verde por el color que prefieras */
+    font-size: 16px;
+    /* Las animaciones de hover las hereda de tu clase .buscador-btn */
+}
+
+.btn-registrar-equipo:hover {
+    background-color: #218838; /* Un verde un poco más oscuro al pasar el mouse */
+}
