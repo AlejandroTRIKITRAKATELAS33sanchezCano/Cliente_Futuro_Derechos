@@ -6,6 +6,8 @@ import Login from './pages/Login'
 import RegistroEquipo from './pages/RegistroEquipo'
 import ConsultaEquipo from './pages/ConsultaEquipo'
 import RutasProtegidas from './pages/components/RutasProtegidas'
+import CuestionarioEvaluacion from './pages/CuestionarioEvaluacion'
+import VerificacionDerechos from './pages/VerificacionDerechos'
 
 function App() {
 
@@ -42,6 +44,27 @@ function App() {
       />
       <Route path='/administrador/registroEquipo' element={<RegistroEquipo/>}/>
       <Route path='/administrador/consultaEquipo' element={<ConsultaEquipo/>}/>
+
+      {/* Módulo Plan de Restitución */}
+      <Route
+        path='/plan-restitucion/cuestionario'
+        /*element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <CuestionarioEvaluacion />
+          </RutasProtegidas>
+        }*/
+       element={<CuestionarioEvaluacion/>}
+      />
+      <Route
+        path='/plan-restitucion/verificacion'
+        /*element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <VerificacionDerechos />
+          </RutasProtegidas>
+        }*/
+
+          element={<VerificacionDerechos/>}
+      />
     </Routes>
   )
 }

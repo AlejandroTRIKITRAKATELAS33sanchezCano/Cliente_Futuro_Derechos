@@ -1,0 +1,354 @@
+/* ===========================
+   PÁGINA VERIFICACIÓN
+=========================== */
+.ver-page {
+    min-height: 100vh;
+    background-color: #f9f9fb;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ver-main {
+    flex: 1;
+    max-width: 1050px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===========================
+   TARJETA INFO DEL CASO
+=========================== */
+.ver-info-caso {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 20px 28px;
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.ver-info-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ver-info-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.ver-info-valor {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #302b4a;
+}
+
+.ver-info-badge {
+    display: inline-block;
+    background-color: #e8f0fe;
+    color: #3367d6;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 2px;
+}
+
+/* ===========================
+   ENCABEZADO DEL MÓDULO
+=========================== */
+.ver-modulo-header {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 24px 28px;
+}
+
+.ver-modulo-titulo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #8a7635;
+    margin: 0 0 6px;
+}
+
+.ver-modulo-desc {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0 0 20px;
+    line-height: 1.6;
+}
+
+/* ---- Barra de progreso ---- */
+.ver-progreso-contenedor {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ver-progreso-texto {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.ver-progreso-barra {
+    width: 100%;
+    height: 8px;
+    background-color: #e9e5d0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.ver-progreso-relleno {
+    height: 100%;
+    background-color: #b5a142;
+    border-radius: 4px;
+    transition: width 0.3s ease;
+}
+
+/* ===========================
+   SECCIONES DE DERECHOS
+=========================== */
+.ver-secciones {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ver-seccion {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+/* ---- Cabecera de sección ---- */
+.ver-seccion-header {
+    background-color: #b5a142;
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+    gap: 12px;
+}
+
+.ver-seccion-header:hover {
+    background-color: #9a8932;
+}
+
+.ver-seccion-header--alerta {
+    background-color: #9a7030;
+}
+
+.ver-seccion-header--alerta:hover {
+    background-color: #7d5a26;
+}
+
+.ver-seccion-titulo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ver-seccion-titulo {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.ver-seccion-subtitulo {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.ver-seccion-controles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.ver-badge-vulnerado {
+    background-color: #e53935;
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+.ver-chevron {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    min-width: 16px;
+    text-align: center;
+}
+
+/* ---- Preguntas ---- */
+.ver-preguntas {
+    display: flex;
+    flex-direction: column;
+}
+
+.ver-pregunta-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 22px;
+    border-bottom: 1px solid #f0ebe0;
+    gap: 20px;
+    transition: background-color 0.2s;
+}
+
+.ver-pregunta-fila:last-child {
+    border-bottom: none;
+}
+
+.ver-pregunta-fila--vulnerada {
+    background-color: #fff8f8;
+    border-left: 3px solid #e53935;
+}
+
+.ver-pregunta-texto {
+    font-size: 0.87rem;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+}
+
+/* ---- Botones Sí / No / No Aplica ---- */
+.ver-opciones {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.ver-btn-opcion {
+    padding: 8px 16px;
+    border: 1.5px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    color: #555;
+    font-size: 0.82rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 80px;
+    text-align: center;
+}
+
+.ver-btn-opcion:hover {
+    border-color: #b5a142;
+    color: #8a7635;
+}
+
+/* Estados activos */
+.ver-btn-opcion--activo.ver-btn-opcion--sí {
+    background-color: #2e7d32;
+    border-color: #2e7d32;
+    color: #fff;
+}
+
+.ver-btn-opcion--activo.ver-btn-opcion--no {
+    background-color: #c62828;
+    border-color: #c62828;
+    color: #fff;
+}
+
+.ver-btn-opcion--activo.ver-btn-opcion--no-aplica {
+    background-color: #546e7a;
+    border-color: #546e7a;
+    color: #fff;
+}
+
+/* ===========================
+   BOTONES DE ACCIÓN (pie)
+=========================== */
+.ver-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid #e0d9b8;
+}
+
+.ver-acciones-derecha {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.ver-btn-atras {
+    background-color: transparent;
+    border: 1.5px solid #999;
+    color: #555;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ver-btn-atras:hover {
+    border-color: #302b4a;
+    color: #302b4a;
+}
+
+.ver-btn-borrador {
+    background-color: transparent;
+    border: 1.5px solid #b5a142;
+    color: #8a7635;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ver-btn-borrador:hover {
+    background-color: #f5f0e0;
+}
+
+.ver-btn-siguiente {
+    background-color: #b5a142;
+    border: none;
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.ver-btn-siguiente:hover {
+    background-color: #9a8932;
+}
+
+.ver-btn-siguiente--deshabilitado {
+    background-color: #ccc;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.ver-btn-siguiente--deshabilitado:hover {
+    background-color: #ccc;
+}
