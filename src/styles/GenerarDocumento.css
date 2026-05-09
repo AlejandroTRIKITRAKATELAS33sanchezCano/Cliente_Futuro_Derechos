@@ -1,0 +1,565 @@
+/* ===========================
+   PÁGINA GENERAR DOCUMENTO
+=========================== */
+.gd-page {
+    min-height: 100vh;
+    background-color: #f9f9fb;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.gd-main {
+    flex: 1;
+    max-width: 1050px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 24px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ===========================
+   TARJETA INFO DEL CASO
+=========================== */
+.gd-info-caso {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 20px 28px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.gd-info-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.gd-info-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.gd-info-valor {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #302b4a;
+}
+
+.gd-info-badge {
+    display: inline-block;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 2px;
+}
+
+.gd-info-acciones {
+    margin-left: auto;
+}
+
+/* ===========================
+   ENCABEZADO DEL MÓDULO
+=========================== */
+.gd-modulo-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.gd-modulo-titulo {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #8a7635;
+    margin: 0;
+}
+
+.gd-modulo-desc {
+    font-size: 0.88rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===========================
+   SECCIONES COLAPSABLES
+=========================== */
+.gd-seccion {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+
+.gd-seccion-header {
+    background-color: #b5a142;
+    padding: 14px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.gd-seccion-header:hover {
+    background-color: #9a8932;
+}
+
+.gd-seccion-titulo-grupo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.gd-seccion-num {
+    background-color: rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    min-width: 28px;
+    text-align: center;
+}
+
+.gd-seccion-titulo {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.gd-chevron {
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.gd-seccion-cuerpo {
+    padding: 24px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ===========================
+   PORTADA
+=========================== */
+.gd-portada {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gd-portada-logos {
+    background: #fafafa;
+    border: 1.5px dashed #ccc;
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+
+.gd-nota-logos {
+    font-size: 0.83rem;
+    color: #888;
+    margin: 0;
+}
+
+.gd-portada-titulo-doc {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #302b4a;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 10px 0 4px;
+    border-bottom: 2px solid #e0d9b8;
+}
+
+.gd-portada-campos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.gd-campo-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 200px;
+    flex: 1;
+}
+
+.gd-campo-ancho {
+    flex: 2;
+    min-width: 320px;
+}
+
+.gd-portada-intro {
+    background: #f9f8f2;
+    border-left: 3px solid #b5a142;
+    border-radius: 0 6px 6px 0;
+    padding: 16px 18px;
+}
+
+.gd-texto-intro {
+    font-size: 0.87rem;
+    color: #444;
+    line-height: 1.7;
+    margin: 0 0 12px;
+}
+
+.gd-indice {
+    margin: 0;
+    padding-left: 20px;
+    font-size: 0.85rem;
+    color: #555;
+    line-height: 1.9;
+}
+
+/* ===========================
+   ELEMENTOS DE FORMULARIO
+=========================== */
+.gd-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.gd-input {
+    padding: 9px 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: #333;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fff;
+}
+
+.gd-input:focus {
+    border-color: #b5a142;
+    box-shadow: 0 0 0 2px rgba(181,161,66,0.12);
+}
+
+.gd-input::placeholder {
+    color: #bbb;
+}
+
+.gd-textarea {
+    padding: 12px 14px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.87rem;
+    color: #333;
+    font-family: inherit;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    transition: border-color 0.2s;
+    background: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.gd-textarea:focus {
+    border-color: #b5a142;
+    box-shadow: 0 0 0 2px rgba(181,161,66,0.12);
+}
+
+.gd-textarea::placeholder { color: #bbb; }
+
+.gd-textarea--md { min-height: 120px; }
+.gd-textarea--lg { min-height: 180px; }
+
+.gd-instruccion {
+    font-size: 0.83rem;
+    color: #777;
+    background: #f9f8f2;
+    border-left: 3px solid #c9b96e;
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    margin: 0;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+.gd-instruccion-sm {
+    font-size: 0.78rem;
+    color: #999;
+    margin: 0;
+    font-style: italic;
+}
+
+.gd-subseccion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-top: 6px;
+    border-top: 1px dashed #e8e3cc;
+}
+
+.gd-subtitulo {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #5b5321;
+    margin: 0;
+}
+
+.gd-texto-fijo {
+    font-size: 0.87rem;
+    color: #444;
+    line-height: 1.7;
+    background: #f9f8f2;
+    border-radius: 6px;
+    padding: 14px 16px;
+}
+
+/* ===========================
+   TABLA DE MEDIDAS (Sección 5)
+=========================== */
+.gd-sin-medidas {
+    font-size: 0.88rem;
+    color: #999;
+    text-align: center;
+    padding: 24px;
+    background: #fafafa;
+    border-radius: 8px;
+    border: 1.5px dashed #ccc;
+}
+
+.gd-tabla-medidas-wrapper {
+    overflow-x: auto;
+}
+
+.gd-tabla-medidas {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.82rem;
+    min-width: 800px;
+}
+
+.gd-tabla-medidas thead tr {
+    background-color: #b5a142;
+}
+
+.gd-tabla-medidas th {
+    color: #fff;
+    font-weight: 700;
+    padding: 11px 12px;
+    text-align: left;
+    border-right: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.78rem;
+}
+
+.gd-tabla-medidas th:last-child { border-right: none; }
+
+.gd-tabla-medidas td {
+    padding: 6px 6px;
+    border: 1px solid #e8e3cc;
+    vertical-align: top;
+}
+
+.gd-tabla-medidas tr:nth-child(even) td {
+    background-color: #fdfbf3;
+}
+
+.gd-cell-textarea {
+    width: 100%;
+    min-height: 70px;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    background: #fff;
+    line-height: 1.5;
+    transition: border-color 0.2s;
+}
+
+.gd-cell-textarea:focus {
+    border-color: #b5a142;
+    box-shadow: 0 0 0 2px rgba(181,161,66,0.12);
+}
+
+/* ===========================
+   BLOQUE DE FIRMAS
+=========================== */
+.gd-firma-intro {
+    font-size: 0.87rem;
+    color: #444;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+    line-height: 2;
+}
+
+.gd-input-inline {
+    border: none;
+    border-bottom: 1.5px solid #b5a142;
+    padding: 2px 8px;
+    font-size: 0.87rem;
+    font-family: inherit;
+    color: #333;
+    outline: none;
+    min-width: 140px;
+    background: transparent;
+}
+
+.gd-firmas {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.gd-firma-bloque {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.gd-firma-linea {
+    width: 100%;
+    border-top: 1.5px solid #302b4a;
+    margin-top: 50px;
+}
+
+.gd-firma-etiqueta {
+    font-size: 0.75rem;
+    color: #666;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===========================
+   BOTONES DE ACCIÓN
+=========================== */
+.gd-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid #e0d9b8;
+}
+
+.gd-acciones-derecha {
+    display: flex;
+    gap: 12px;
+}
+
+.gd-btn-atras {
+    background-color: transparent;
+    border: 1.5px solid #999;
+    color: #555;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.gd-btn-atras:hover { border-color: #302b4a; color: #302b4a; }
+
+.gd-btn-guardar {
+    background-color: transparent;
+    border: 1.5px solid #b5a142;
+    color: #8a7635;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.gd-btn-guardar:hover { background-color: #f5f0e0; }
+
+.gd-btn-imprimir,
+.gd-btn-imprimir-final {
+    background-color: #302b4a;
+    border: none;
+    color: #fff;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.gd-btn-imprimir { padding: 8px 18px; font-size: 0.82rem; }
+.gd-btn-imprimir:hover,
+.gd-btn-imprimir-final:hover { background-color: #1e1a30; }
+
+/* ===========================
+   ESTILOS DE IMPRESIÓN
+=========================== */
+@media print {
+    .gd-page header,
+    .gd-info-acciones,
+    .gd-acciones,
+    .gd-btn-guardar,
+    .gd-btn-imprimir,
+    .gd-btn-imprimir-final {
+        display: none !important;
+    }
+
+    .gd-main {
+        max-width: 100%;
+        padding: 10mm 15mm;
+        gap: 10mm;
+    }
+
+    .gd-seccion {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+
+    .gd-seccion-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .gd-textarea,
+    .gd-input,
+    .gd-cell-textarea {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        border-radius: 0;
+        padding: 4px 0;
+        background: transparent !important;
+        resize: none;
+    }
+
+    .gd-firma-linea {
+        margin-top: 30mm;
+    }
+
+    .gd-tabla-medidas {
+        font-size: 9pt;
+    }
+}

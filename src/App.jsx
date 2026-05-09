@@ -8,6 +8,7 @@ import ConsultaEquipo from './pages/ConsultaEquipo'
 import RutasProtegidas from './pages/components/RutasProtegidas'
 import CuestionarioEvaluacion from './pages/CuestionarioEvaluacion'
 import VerificacionDerechos from './pages/VerificacionDerechos'
+import GenerarDocumento from './pages/GenerarDocumento'
 
 function App() {
 
@@ -65,6 +66,17 @@ function App() {
 
           element={<VerificacionDerechos/>}
       />
+
+      <Route
+        path='/plan-restitucion/GenerarDocumento'
+        /*element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <GenerarDocumento />
+          </RutasProtegidas>
+        }*/
+        
+        element = {<GenerarDocumento/>}
+    />
     </Routes>
   )
 }
