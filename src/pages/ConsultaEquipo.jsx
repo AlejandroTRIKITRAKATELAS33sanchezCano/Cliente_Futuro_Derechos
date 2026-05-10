@@ -1,12 +1,42 @@
 import { useEffect, useState } from "react";
-import axiosInstance from "../api/axiosInstance";
+// import axiosInstance from "../api/axiosInstance"; // Comentamos esto por ahora
 import Header from "./components/Header";
 import "../styles/ConsultaEquipo.css";
 
 function ConsultaEquipo() {
-    const [equipos, setEquipos] = useState([]);
+    // AQUÍ ESTÁ EL EQUIPO DE PRUEBA
+    // Lo ponemos como valor inicial dentro del useState
+    const [equipos, setEquipos] = useState([
+        {
+            idequipo: 1,
+            equclave: "Equipo Alfa",
+            integrantes: [
+                { nombre_completo: "Juan Pérez" },
+                { nombre_completo: "Ana López" },
+                { nombre_completo: "Carlos Sánchez" }
+            ]
+        },
+        {
+            idequipo: 2,
+            equclave: "Equipo Beta",
+            integrantes: [
+                { nombre_completo: "María Gómez" },
+                { nombre_completo: "Luis Torres" }
+            ]
+        },
+        {
+            idequipo: 3,
+            equclave: "Equipo Omega",
+            integrantes: [] // Dejamos este vacío para ver cómo se ve el mensaje de "Sin integrantes"
+        }
+    ]);
 
     useEffect(() => {
+        /* COMENTAMOS TEMPORALMENTE LA PETICIÓN AL BACKEND
+        Para que no borre nuestros datos de prueba.
+        Cuando ya quieras usar los datos reales, solo borra los datos 
+        de prueba de arriba y descomenta esto.
+        
         const obtenerEquipos = async () => {
             try {
                 const response = await axiosInstance.get("/equipos");
@@ -16,6 +46,7 @@ function ConsultaEquipo() {
             }
         };
         obtenerEquipos();
+        */
     }, []);
 
     return (

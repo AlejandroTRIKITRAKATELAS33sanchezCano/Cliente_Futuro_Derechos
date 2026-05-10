@@ -23,11 +23,20 @@ function RegistroEquipo() {
         obtenerUsuarios();
     }, []);
 
-    // Filtrar usuarios para la tabla de búsqueda
-    const usuariosFiltrados = usuarios.filter((usuario) =>
-        usuario.nombre_completo?.toLowerCase().includes(busqueda.toLowerCase()) &&
-        !equipoSeleccionado.find(u => u.idusuario === usuario.idusuario) // No mostrar si ya está en el equipo
-    );
+    // AQUÍ ESTÁ EL CAMBIO: Filtrar usuarios por nombre o RFC para la tabla de búsqueda
+    const usuariosFiltrados = usuarios.filter((usuario) => {
+        const termino = busqueda.toLowerCase();
+        
+        // Evaluamos si la búsqueda coincide con el nombre o el RFC
+        const coincideNombre = usuario.nombre_completo?.toLowerCase().includes(termino);
+        const coincideRFC = usuario.usurfc?.toLowerCase().includes(termino);
+        
+        // Evaluamos que el usuario NO esté ya en la lista del equipo
+        const noEstaEnEquipo = !equipoSeleccionado.find(u => u.idusuario === usuario.idusuario);
+
+        // Retornamos true si cumple la coincidencia de texto Y no está en el equipo
+        return (coincideNombre || coincideRFC) && noEstaEnEquipo;
+    });
 
     // Función para añadir al equipo
     const agregarAlEquipo = (usuario) => {
