@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap');
+
+/* ===========================
+   PÁGINA COMPLETA
+=========================== */
+.cue-page {
+    min-height: 100vh;
+    background-color: #f9f9fb;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===========================
+   HEADER INSTITUCIONAL
+=========================== */
+.cue-header {
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    border-bottom: 2px solid #c9b96e;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    box-sizing: border-box;
+}
+
+.cue-header-logo img {
+    max-height: 75px;
+    width: auto;
+}
+
+.cue-escudo-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border: 2px solid #302b4a;
+    border-radius: 50%;
+    text-align: center;
+    padding: 4px;
+}
+
+.cue-escudo-placeholder span {
+    font-size: 0.45rem;
+    font-weight: 700;
+    color: #302b4a;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.cue-escudo-placeholder small {
+    font-size: 0.35rem;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+/* ===========================
+   MAIN
+=========================== */
+.cue-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 30px 60px;
+}
+
+/* ===========================
+   TÍTULO
+=========================== */
+.cue-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #8a7635;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* ===========================
+   TABLA
+=========================== */
+.cue-tabla-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.cue-tabla {
+    min-width: 1000px;
+    border: 1.5px solid #c9b96e;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+/* ---- Fila de encabezados ---- */
+.cue-tabla-encabezados {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: #b5a142;
+}
+
+.cue-encabezado-celda {
+    padding: 14px 12px;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+    border-right: 1px solid #c9b96e;
+}
+
+.cue-encabezado-celda:last-child {
+    border-right: none;
+}
+
+/* ---- Fila del cuerpo ---- */
+.cue-tabla-cuerpo {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: #fff;
+}
+
+.cue-cuerpo-celda {
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-right: 1px solid #e0d9b8;
+    border-top: 1px solid #e0d9b8;
+}
+
+.cue-cuerpo-celda:last-child {
+    border-right: none;
+}
+
+.cue-regla-titulo {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #302b4a;
+    margin: 0;
+}
+
+.cue-regla-pregunta {
+    font-size: 0.78rem;
+    color: #444;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.cue-textarea {
+    flex: 1;
+    min-height: 200px;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 0.8rem;
+    color: #333;
+    font-family: inherit;
+    line-height: 1.5;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.cue-textarea:focus {
+    border-color: #b5a142;
+    box-shadow: 0 0 0 2px rgba(181, 161, 66, 0.15);
+}
+
+.cue-textarea::placeholder {
+    color: #aaa;
+}
+
+/* ===========================
+   FOOTER / BOTÓN
+=========================== */
+.cue-footer {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.cue-btn-continuar {
+    background-color: #b5a142;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 36px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.15s;
+    letter-spacing: 0.02em;
+}
+
+.cue-btn-continuar:hover {
+    background-color: #9a8932;
+    transform: translateY(-1px);
+}
+
+.cue-btn-continuar:active {
+    transform: translateY(0);
+}

@@ -5,19 +5,78 @@ import InfoEmpleado from './pages/InfoEmpleado'
 import Login from './pages/Login'
 import RegistroEquipo from './pages/RegistroEquipo'
 import ConsultaEquipo from './pages/ConsultaEquipo'
+import RutasProtegidas from './pages/components/RutasProtegidas'
+import CuestionarioEvaluacion from './pages/CuestionarioEvaluacion'
+import VerificacionDerechos from './pages/VerificacionDerechos'
+import GenerarDocumento from './pages/GenerarDocumento'
 
 function App() {
 
   return (
     <Routes>
-      <Route path='/' element={<Login/>}/>
-      {//Rutas Administrador
-      }
-      <Route path='/administrador/consultarEmpleados' element={<ConsultarEmpleados/>}/>
-      <Route path='/administrador/registrarEmpleado' element={<RegistrarEmpleado/>}/>
-      <Route path='/administrador/InfoEmpleado/:id' element={<InfoEmpleado/>}/>
+      <Route path='/' element={<Login />} />
+
+      {/* Rutas Administrador */}
+      <Route
+        path='/administrador/consultarEmpleados'
+        element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <ConsultarEmpleados />
+          </RutasProtegidas>
+        }
+      />
+
+      <Route
+        path='/administrador/registrarEmpleado'
+        element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <RegistrarEmpleado />
+          </RutasProtegidas>
+        }
+      />
+
+      <Route
+        path='/administrador/InfoEmpleado/:id'
+        element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <InfoEmpleado />
+          </RutasProtegidas>
+        }
+      />
       <Route path='/administrador/registroEquipo' element={<RegistroEquipo/>}/>
       <Route path='/administrador/consultaEquipo' element={<ConsultaEquipo/>}/>
+
+      {/* Módulo Plan de Restitución */}
+      <Route
+        path='/plan-restitucion/cuestionario'
+        /*element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <CuestionarioEvaluacion />
+          </RutasProtegidas>
+        }*/
+       element={<CuestionarioEvaluacion/>}
+      />
+      <Route
+        path='/plan-restitucion/verificacion'
+        /*element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <VerificacionDerechos />
+          </RutasProtegidas>
+        }*/
+
+          element={<VerificacionDerechos/>}
+      />
+
+      <Route
+        path='/plan-restitucion/GenerarDocumento'
+        /*element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <GenerarDocumento />
+          </RutasProtegidas>
+        }*/
+        
+        element = {<GenerarDocumento/>}
+    />
     </Routes>
   )
 }
