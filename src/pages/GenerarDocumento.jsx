@@ -109,6 +109,7 @@ function GenerarDocumento() {
     // ── Imprimir / exportar
     const imprimirDocumento = () => {
         window.print();
+        navigate("/plan-restitucion/SeguimientoPlanes");
     };
 
     return (

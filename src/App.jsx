@@ -9,6 +9,7 @@ import RutasProtegidas from './pages/components/RutasProtegidas'
 import CuestionarioEvaluacion from './pages/CuestionarioEvaluacion'
 import VerificacionDerechos from './pages/VerificacionDerechos'
 import GenerarDocumento from './pages/GenerarDocumento'
+import SeguimientoPlanes from './pages/SeguimientoPlanes'
 
 function App() {
 
@@ -68,7 +69,7 @@ function App() {
       />
 
       <Route
-        path='/plan-restitucion/GenerarDocumento'
+        path='/plan-restitucion/crear-plan'
         /*element={
           <RutasProtegidas allowedRoles={[1, 2]}>
             <GenerarDocumento />
@@ -77,6 +78,12 @@ function App() {
         
         element = {<GenerarDocumento/>}
     />
+
+      <Route
+        path='/plan-restitucion/SeguimientoPlanes'
+        element = {<SeguimientoPlanes/>}
+      />
+
     </Routes>
   )
 }
