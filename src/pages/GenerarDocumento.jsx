@@ -109,7 +109,7 @@ function GenerarDocumento() {
     // ── Imprimir / exportar
     const imprimirDocumento = () => {
         window.print();
-        navigate("/plan-restitucion/SeguimientoPlanes");
+        navigate("/administrador/InfoEmpleado/:id");
     };
 
     return (

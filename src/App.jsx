@@ -10,6 +10,7 @@ import CuestionarioEvaluacion from './pages/CuestionarioEvaluacion'
 import VerificacionDerechos from './pages/VerificacionDerechos'
 import GenerarDocumento from './pages/GenerarDocumento'
 import SeguimientoPlanes from './pages/SeguimientoPlanes'
+import CrearPlan from './pages/CrearPlan'
 
 function App() {
 
@@ -21,27 +22,27 @@ function App() {
       <Route
         path='/administrador/consultarEmpleados'
         element={
-          <RutasProtegidas allowedRoles={[1, 2]}>
+          //<RutasProtegidas allowedRoles={[1, 2]}>
             <ConsultarEmpleados />
-          </RutasProtegidas>
+          //</RutasProtegidas>
         }
       />
 
       <Route
         path='/administrador/registrarEmpleado'
         element={
-          <RutasProtegidas allowedRoles={[1, 2]}>
+          //<RutasProtegidas allowedRoles={[1, 2]}>
             <RegistrarEmpleado />
-          </RutasProtegidas>
+          //</RutasProtegidas>
         }
       />
 
       <Route
         path='/administrador/InfoEmpleado/:id'
         element={
-          <RutasProtegidas allowedRoles={[1, 2]}>
+          //<RutasProtegidas allowedRoles={[1, 2]}>
             <InfoEmpleado />
-          </RutasProtegidas>
+          //</RutasProtegidas>
         }
       />
       <Route path='/administrador/registroEquipo' element={<RegistroEquipo/>}/>
@@ -69,7 +70,7 @@ function App() {
       />
 
       <Route
-        path='/plan-restitucion/crear-plan'
+        path='/plan-restitucion/documento'
         /*element={
           <RutasProtegidas allowedRoles={[1, 2]}>
             <GenerarDocumento />
@@ -77,6 +78,17 @@ function App() {
         }*/
         
         element = {<GenerarDocumento/>}
+    />
+
+    <Route
+        path='/plan-restitucion/crear-plan'
+        /*element={
+          <RutasProtegidas allowedRoles={[1, 2]}>
+            <GenerarDocumento />
+          </RutasProtegidas>
+        }*/
+        
+        element = {<CrearPlan/>}
     />
 
       <Route
