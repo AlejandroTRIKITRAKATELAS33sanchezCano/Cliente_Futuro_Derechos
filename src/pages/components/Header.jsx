@@ -84,9 +84,9 @@ function Header() {
                     {menuAbierto && (
                         <div className="menu-desplegable">
                             <ul className="menu-lista">
-                                <li className="menu-item">Inicio</li>
-                                <li className="menu-item">Empleados</li>
-                                <li className="menu-item">Configuración</li>
+                                <li className="menu-item" onClick={() => { navigate("/administrador/consultarEmpleados"); setMenuAbierto(false); }}>Empleados</li>
+                                <li className="menu-item" onClick={() => { navigate("/administrador/registroEquipo"); setMenuAbierto(false); }}>Equipos</li>
+                                <li className="menu-item" onClick={() => { navigate("/plan-restitucion/cuestionario"); setMenuAbierto(false); }}>Plan de Restitución</li>
                                 <hr className="menu-divisor" />
                                 <li className="menu-item salir" onClick={cerrarSesion}>
                                     Cerrar Sesión

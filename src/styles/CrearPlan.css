@@ -1,0 +1,341 @@
+/* ===========================
+   PÁGINA CREAR PLAN
+=========================== */
+.cp-page {
+    min-height: 100vh;
+    background-color: #f9f9fb;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.cp-main {
+    flex: 1;
+    max-width: 1300px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 24px 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===========================
+   TARJETA INFO DEL CASO
+=========================== */
+.cp-info-caso {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 20px 28px;
+    display: flex;
+    gap: 48px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.cp-info-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cp-info-label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.cp-info-valor {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #302b4a;
+}
+
+.cp-info-badge {
+    display: inline-block;
+    background-color: #f3e8ff;
+    color: #7c3aed;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-top: 2px;
+}
+
+/* ===========================
+   ENCABEZADO DEL MÓDULO
+=========================== */
+.cp-modulo-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cp-modulo-titulo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #8a7635;
+    margin: 0;
+}
+
+.cp-modulo-desc {
+    font-size: 0.9rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* ===========================
+   TABLA DE MEDIDAS
+=========================== */
+.cp-tabla-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    overflow: hidden;
+}
+
+.cp-tabla {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* -- Encabezado de la tabla -- */
+.cp-tabla-header {
+    display: grid;
+    grid-template-columns: 1.4fr 1.1fr 1.8fr 1.1fr 1.6fr 1fr 48px;
+    background-color: #b5a142;
+    min-width: 900px;
+}
+
+.cp-th {
+    padding: 13px 12px;
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    border-right: 1px solid rgba(255,255,255,0.2);
+}
+
+.cp-th:last-child {
+    border-right: none;
+    text-align: center;
+}
+
+/* -- Filas de datos -- */
+.cp-tabla-fila {
+    display: grid;
+    grid-template-columns: 1.4fr 1.1fr 1.8fr 1.1fr 1.6fr 1fr 48px;
+    border-bottom: 1px solid #f0ebe0;
+    min-width: 900px;
+    align-items: center;
+}
+
+.cp-tabla-fila:last-child {
+    border-bottom: none;
+}
+
+.cp-td {
+    padding: 10px 10px;
+    border-right: 1px solid #f0ebe0;
+}
+
+.cp-td:last-child {
+    border-right: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* -- Inputs y selects -- */
+.cp-input,
+.cp-select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1.5px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    color: #333;
+    font-family: inherit;
+    background-color: #fff;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-sizing: border-box;
+}
+
+.cp-input:focus,
+.cp-select:focus {
+    border-color: #b5a142;
+    box-shadow: 0 0 0 2px rgba(181, 161, 66, 0.15);
+}
+
+.cp-input::placeholder {
+    color: #bbb;
+    font-size: 0.78rem;
+}
+
+.cp-select {
+    cursor: pointer;
+    appearance: auto;
+}
+
+/* -- Botón eliminar fila -- */
+.cp-btn-eliminar {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    color: #aaa;
+    transition: color 0.15s, background-color 0.15s;
+    line-height: 1;
+}
+
+.cp-btn-eliminar:hover:not(:disabled) {
+    color: #c62828;
+    background-color: #ffebee;
+}
+
+.cp-btn-eliminar:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* -- Botón agregar fila -- */
+.cp-btn-agregar {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 16px 16px;
+    padding: 9px 20px;
+    background-color: transparent;
+    border: 1.5px solid #b5a142;
+    color: #8a7635;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    align-self: flex-start;
+}
+
+.cp-btn-agregar:hover {
+    background-color: #f5f0e0;
+}
+
+/* ===========================
+   AVISO INFORMATIVO
+=========================== */
+.cp-aviso {
+    background: #f0f7ff;
+    border: 1.5px solid #90caf9;
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+.cp-aviso-icono {
+    font-size: 1.3rem;
+    margin-top: 1px;
+    flex-shrink: 0;
+}
+
+.cp-aviso-titulo {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #1565c0;
+    margin: 0 0 4px;
+}
+
+.cp-aviso-desc {
+    font-size: 0.85rem;
+    color: #1976d2;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* ===========================
+   BOTONES DE ACCIÓN
+=========================== */
+.cp-acciones {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 8px;
+    border-top: 1px solid #e0d9b8;
+}
+
+.cp-acciones-derecha {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.cp-btn-atras {
+    background-color: transparent;
+    border: 1.5px solid #999;
+    color: #555;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.cp-btn-atras:hover {
+    border-color: #302b4a;
+    color: #302b4a;
+}
+
+.cp-btn-guardar {
+    background-color: transparent;
+    border: 1.5px solid #b5a142;
+    color: #8a7635;
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.cp-btn-guardar:hover {
+    background-color: #f5f0e0;
+}
+
+.cp-btn-finalizar {
+    background-color: #302b4a;
+    border: none;
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cp-btn-finalizar:hover {
+    background-color: #1e1a30;
+}
+
+.cp-btn-finalizar--deshabilitado {
+    background-color: #ccc;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.cp-btn-finalizar--deshabilitado:hover {
+    background-color: #ccc;
+}

@@ -1,0 +1,165 @@
+/* ===========================
+   CONTENEDOR PRINCIPAL
+=========================== */
+.kanban-page {
+    min-height: 100vh;
+    background-color: #f9f9fb;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.kanban-main {
+    flex: 1;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===========================
+   BARRA DE HERRAMIENTAS (Título y Botón)
+=========================== */
+.kanban-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.kanban-titulo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #bfa145; /* Tono dorado del diseño */
+    margin: 0;
+}
+
+.kanban-btn-nuevo {
+    background-color: #b5a142;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.kanban-btn-nuevo:hover {
+    background-color: #9a8932;
+}
+
+.kanban-divisor {
+    border: 0;
+    height: 2px;
+    background-color: #bfa145;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+/* ===========================
+   TABLERO KANBAN
+=========================== */
+.kanban-board {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.kanban-columna {
+    flex: 1;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+}
+
+/* Encabezados de las columnas */
+.kanban-columna-header {
+    padding: 16px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.kanban-columna-header h2 {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.kanban-contador {
+    display: block;
+    font-size: 0.9rem;
+    margin-top: 4px;
+}
+
+/* Cuerpos de las columnas (fondos tenues) */
+.kanban-columna-body {
+    padding: 16px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Variaciones de color por columna */
+.kanban-columna--esperando .kanban-columna-header {
+    background-color: #fcb900; /* Amarillo/Naranja */
+}
+.kanban-columna--esperando .kanban-columna-body {
+    background-color: #fffdf2;
+}
+
+.kanban-columna--en-proceso .kanban-columna-header {
+    background-color: #2972ff; /* Azul brillante */
+}
+.kanban-columna--en-proceso .kanban-columna-body {
+    background-color: #eff5ff;
+}
+
+.kanban-columna--cerrados .kanban-columna-header {
+    background-color: #00d254; /* Verde */
+}
+.kanban-columna--cerrados .kanban-columna-body {
+    background-color: #ecfdf3;
+}
+
+/* ===========================
+   TARJETAS DE LOS CASOS
+=========================== */
+.kanban-tarjeta {
+    background-color: #ffffff;
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.kanban-tarjeta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.kanban-tarjeta-nombre {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.kanban-tarjeta-detalles {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.kanban-tarjeta-detalles p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666666;
+}
